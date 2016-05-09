@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
@@ -20,6 +22,10 @@ public class ProjectGon extends Canvas implements Runnable {
 	
 	private JFrame frame;
 	public boolean running = false;
+	public int tickCount = 0;
+	
+	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
 	public ProjectGon() {
 		setMaximumSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
@@ -89,7 +95,7 @@ public class ProjectGon extends Canvas implements Runnable {
 	}
 	
 	public void tick() {
-		
+		tickCount++;
 	}
 	
 	public void render() {
