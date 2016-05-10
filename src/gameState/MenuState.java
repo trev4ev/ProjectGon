@@ -27,7 +27,7 @@ public class MenuState extends GameState{
 			bg.setVector(-0.5,0);
 			
 			titleColor = Color.black;
-			titleFont= new Font("Century Gothic", Font.PLAIN, 28);
+			titleFont= new Font("Book Antiqua", Font.BOLD, 28);
 			font = new Font("Arial", Font.PLAIN, 12);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -64,6 +64,7 @@ public class MenuState extends GameState{
 	private void select() {
 		switch(currentChoice) {
 			case 0:
+				gsm.setState(1);
 				break;
 			case 1:
 				break;
