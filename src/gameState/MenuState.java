@@ -23,7 +23,7 @@ public class MenuState extends GameState{
 		this.gsm = gsm;
 		
 		try {
-			bg = new Background("/Backgrounds/menubg.gif", 1);
+			bg = new Background("/Backgrounds/grassbg1.gif", 1);
 			bg.setVector(-0.5,0);
 			
 			titleColor = Color.black;
