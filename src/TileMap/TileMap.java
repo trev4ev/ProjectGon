@@ -1,6 +1,9 @@
 package TileMap;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
@@ -56,7 +59,70 @@ public class TileMap {
 		}
 	}
 	
-	public void loadMap() {
-		
+	public void loadMap(String s) {
+		try {
+			InputStream in = getClass().getResourceAsStream(s);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			numCols = Integer.parseInt(br.readLine());
+			numRows = Integer.parseInt(br.readLine());
+			map = new int[numRows][numCols];
+			width = numCols * tileSize;
+			height = numRows * tileSize;
+			String delim = "\\s+";
+			for(int i = 0; i < numRows; i++) {
+				String line = br.readLine();
+				String[] tokens = line.split(delim);
+				for(int j = 0; j < numCols; j++) {
+					map[i][j] = Integer.parseInt(tokens[j]);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+	public int getY() {
+		return (int)y;
+	}
+
+	public int getX() {
+		return (int)x;
+	}
+
+	public int getTileSize() {
+		return tileSize;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
+	public int getType(int row, int col) {
+		int rc = map[row][col];
+		int r = rc / numTiles;
+		int c = rc % numTiles;
+		return tiles[r][c].getType();
+	}
+	
+	public void setPosition(double x, double y) {
+		this.x = x;
+		this.y = y;
+		fixBounds();
+		
+		colOffset = (int)-this.x / tileSize;
+		rowOffset = (int)-this.y / tileSize;
+	}
+	
+	private void fixBounds() {
+		if(x < xmin) x = xmin;
+		if(y < ymin) y = ymin;
+		if(x > xmax) x = xmax;
+		if(y > ymax) y = ymax;
+	}
+	
+
 }
