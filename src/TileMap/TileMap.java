@@ -49,7 +49,7 @@ public class TileMap {
 				subImage = tileSet.getSubimage(i * tileSize, 0, tileSize, tileSize);
 				tiles[0][i] = new Tile(subImage, Tile.NORMAL);
 				subImage = tileSet.getSubimage(i * tileSize, tileSize, tileSize, tileSize);
-				tiles[1][i] = new Tile(subImage, Tile.NORMAL);
+				tiles[1][i] = new Tile(subImage, Tile.BLOCKED);
  			}
 		} catch(Exception e) {
 			e.printStackTrace();
