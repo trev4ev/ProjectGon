@@ -23,6 +23,11 @@ public abstract class Entity {
 	public static int DOWN = 2;
 	public static int LEFT = 3;
 	
+	protected boolean movingLeft;
+	protected boolean movingRight;
+	protected boolean movingUp;
+	protected boolean movingDown;
+	
 	protected int width;
 	protected int height;
 	protected int cwidth;
@@ -68,18 +73,31 @@ public abstract class Entity {
 		xtemp = x;
 		ytemp = y;
 		
-		if(xdest - cwidth/2 <= tileSize || xdest + cwidth/2 >= GamePanel.WIDTH - tileSize) {
-			dx = 0;
+		for(int i = 0; i < tm.getRectangleCount(); i++) {
+			if(tm.getBlocks()[i].intersects(getRectangle())) {
+				dx = 0;
+				dy = 0;
+				if(movingLeft) {
+					xtemp += 3;
+					movingLeft = false;
+				}
+				if(movingRight) {
+					xtemp -= 3;
+					movingRight = false;
+				}
+				if(movingDown) {
+					ytemp -= 3;
+					movingDown = false;
+				}
+				if(movingUp) {
+					ytemp += 3;
+					movingUp = false;
+				}
+				
+			}
 		}
-		else {
-			xtemp += dx;
-		}
-		if(ydest - height/2 <= tileSize || ydest + height/2 >= GamePanel.HEIGHT - tileSize) {
-			dy = 0;
-		}
-		else {
-			ytemp += dy;
-		}
+		ytemp+= dy;
+		xtemp+= dx;
 		
 	}
 	

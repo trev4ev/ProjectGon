@@ -1,6 +1,7 @@
 package tileMap;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -34,6 +35,10 @@ public class TileMap {
 	private int rowsDrawn;
 	private int colsDrawn;
 	
+	private Rectangle[] blocks;
+
+	private int rectangleCount = 0;
+	
 	public TileMap(int ts) {
 		tileSize = ts;
 		rowsDrawn = GamePanel.HEIGHT / tileSize;
@@ -60,6 +65,7 @@ public class TileMap {
 	
 	public void loadMap(String s) {
 		try {
+			blocks = new Rectangle[rowsDrawn*colsDrawn];
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			numCols = Integer.parseInt(br.readLine());
@@ -73,6 +79,10 @@ public class TileMap {
 				String[] tokens = line.split(delim);
 				for(int j = 0; j < numCols; j++) {
 					map[i][j] = Integer.parseInt(tokens[j]);
+					if(map[i][j] / numTiles > 0) {
+						blocks[rectangleCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
+						rectangleCount++;
+					}
 				}
 			}
 		} catch(Exception e) {
@@ -120,6 +130,14 @@ public class TileMap {
 		this.y = y;
 	}
 	
+	public Rectangle[] getBlocks() {
+		return blocks;
+	}
+	
+	public int getRectangleCount() {
+		return rectangleCount;
+	}
+	
 	public void draw(Graphics2D g) {
 		for(int row = 0; row < rowsDrawn; row++) {
 			for(int col = 0; col < colsDrawn; col++) {
@@ -135,6 +153,9 @@ public class TileMap {
 				g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int)y + row * tileSize, null);
 				
 			}
+		}
+		for(int i = 0; i < rectangleCount; i++) {
+			g.draw(blocks[i]);
 		}
 	}
 

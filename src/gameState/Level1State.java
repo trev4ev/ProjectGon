@@ -2,8 +2,9 @@ package gameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
+import entity.Entity;
 import entity.Player;
 import main.GamePanel;
 import tileMap.Background;
@@ -14,6 +15,8 @@ public class Level1State extends GameState{
 	private TileMap tm;
 	private Background bg;
 	private Player p;
+	private Player p2;
+	private ArrayList<Entity> entities;
 	
 	public Level1State(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -28,6 +31,7 @@ public class Level1State extends GameState{
 		tm.loadMap("/Maps/room1.map");
 		tm.setPosition(0, 0);
 		p = new Player(tm);
+		p.setPosition(GamePanel.WIDTH/2, GamePanel.HEIGHT/4);
 	}
 
 	@Override

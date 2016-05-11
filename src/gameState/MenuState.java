@@ -22,7 +22,6 @@ public class MenuState extends GameState{
 		
 		try {
 			bg = new Background("/Backgrounds/menubg.gif", 1);
-			bg.setVector(-1,0);
 			
 			font = new Font("Arial", Font.PLAIN, 12);
 		} catch(Exception e) {

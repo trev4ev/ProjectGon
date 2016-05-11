@@ -13,10 +13,6 @@ public class Player extends Entity{
 	
 	private int health;
 	private int maxHealth;
-	private boolean movingLeft = false;
-	private boolean movingRight = false;
-	private boolean movingUp = false;
-	private boolean movingDown = false;
 
 	public Player(TileMap tm) {
 		super(tm);
@@ -24,10 +20,14 @@ public class Player extends Entity{
 		width = 30;
 		height = 30;
 		cwidth = 20;
-		cwidth = 20;
+		cheight = 20;
+		
+		movingLeft = false;
+		movingRight = false;
+		movingUp = false;
+		movingDown = false;
 		
 		direction = Entity.DOWN;
-		setPosition(GamePanel.WIDTH/2, GamePanel.HEIGHT/2);
 		
 		animation = new Animation();
 		try {
@@ -74,6 +74,7 @@ public class Player extends Entity{
 	
 	public void draw(Graphics2D g) {
 		g.drawImage(animation.getImage(), (int)x-width/2, (int)y-height/2, null);
+		g.draw(getRectangle());
 	}
 	
 	public void keyPressed(int k) {
