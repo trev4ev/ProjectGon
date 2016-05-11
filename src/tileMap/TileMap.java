@@ -1,5 +1,6 @@
-package TileMap;
+package tileMap;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -124,5 +125,21 @@ public class TileMap {
 		if(y > ymax) y = ymax;
 	}
 	
+	public void draw(Graphics2D g) {
+		for(int row = rowOffset; row < rowOffset + rowsDrawn; row++) {
+			if(row >= numRows) break;
+			for(int col = colOffset; col < colOffset + colsDrawn; col++) {				
+				if(col >= numCols) break;
+				if(map[row][col] == 0) continue;
+				
+				int rc = map[row][col];
+				int r = rc / numTiles;
+				int c = rc % numTiles;
+				
+				g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int)y + row * tileSize, null);
+				
+			}
+		}
+	}
 
 }
