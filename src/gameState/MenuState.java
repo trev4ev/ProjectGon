@@ -14,8 +14,6 @@ public class MenuState extends GameState{
 	private int currentChoice = 0;	
 	private String[] options = {"Start","Help","Quit"};
 	
-	private Color titleColor;
-	private Font titleFont;
 	private Font font;
 	
 	
@@ -23,11 +21,9 @@ public class MenuState extends GameState{
 		this.gsm = gsm;
 		
 		try {
-			bg = new Background("/Backgrounds/grassbg1.gif", 1);
-			bg.setVector(-0.5,0);
+			bg = new Background("/Backgrounds/menubg.gif", 1);
+			bg.setVector(-1,0);
 			
-			titleColor = Color.black;
-			titleFont= new Font("Book Antiqua", Font.BOLD, 28);
 			font = new Font("Arial", Font.PLAIN, 12);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -46,18 +42,14 @@ public class MenuState extends GameState{
 	public void draw(Graphics2D g) {
 		bg.draw(g);
 		
-		g.setColor(titleColor);
-		g.setFont(titleFont);
-		g.drawString("Project Gon", 80, 70);
-		
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++)
 		{
 			if(currentChoice == i)
-				g.setColor(Color.white);
+				g.setColor(new Color(102,45,145));
 			else
-				g.setColor(Color.green);
-			g.drawString(options[i], 145, 140 + i*15);
+				g.setColor(Color.black);
+			g.drawString(options[i], 140, 140 + i*15);
 		}
 	}
 	

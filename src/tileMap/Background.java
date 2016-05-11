@@ -40,6 +40,10 @@ public class Background {
 	public void update() {
 		x += dx;
 		y += dy;
+		
+		if(x < -GamePanel.WIDTH) {
+			x = 0;
+		}
 	}
 	
 	public void draw(Graphics2D g) {
