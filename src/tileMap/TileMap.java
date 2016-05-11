@@ -31,15 +31,13 @@ public class TileMap {
 	private int numTiles;
 	private Tile[][] tiles;
 	
-	private int rowOffset;
-	private int colOffset;
 	private int rowsDrawn;
 	private int colsDrawn;
 	
 	public TileMap(int ts) {
 		tileSize = ts;
-		rowsDrawn = GamePanel.HEIGHT / tileSize + 2;
-		colsDrawn = GamePanel.WIDTH / tileSize + 2;
+		rowsDrawn = GamePanel.HEIGHT / tileSize;
+		colsDrawn = GamePanel.WIDTH / tileSize;
 	}
 	
 	public void loadTiles(String s) {
@@ -102,6 +100,14 @@ public class TileMap {
 		return height;
 	}
 	
+	public int getNumRows() { 
+		return numRows; 
+	}
+	
+	public int getNumCols() { 
+		return numCols; 
+	}
+	
 	public int getType(int row, int col) {
 		int rc = map[row][col];
 		int r = rc / numTiles;
@@ -112,29 +118,19 @@ public class TileMap {
 	public void setPosition(double x, double y) {
 		this.x = x;
 		this.y = y;
-		fixBounds();
-		
-		colOffset = (int)-this.x / tileSize;
-		rowOffset = (int)-this.y / tileSize;
-	}
-	
-	private void fixBounds() {
-		if(x < xmin) x = xmin;
-		if(y < ymin) y = ymin;
-		if(x > xmax) x = xmax;
-		if(y > ymax) y = ymax;
 	}
 	
 	public void draw(Graphics2D g) {
-		for(int row = rowOffset; row < rowOffset + rowsDrawn; row++) {
-			if(row >= numRows) break;
-			for(int col = colOffset; col < colOffset + colsDrawn; col++) {				
-				if(col >= numCols) break;
+		for(int row = 0; row < rowsDrawn; row++) {
+			for(int col = 0; col < colsDrawn; col++) {
 				if(map[row][col] == 0) continue;
 				
 				int rc = map[row][col];
+				
 				int r = rc / numTiles;
 				int c = rc % numTiles;
+				
+				//System.out.println(numTiles+ ", " +r + "," + c);
 				
 				g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int)y + row * tileSize, null);
 				
