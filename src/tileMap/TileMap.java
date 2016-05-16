@@ -148,14 +148,9 @@ public class TileMap {
 				int r = rc / numTiles;
 				int c = rc % numTiles;
 				
-				//System.out.println(numTiles+ ", " +r + "," + c);
-				
 				g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int)y + row * tileSize, null);
 				
 			}
-		}
-		for(int i = 0; i < rectangleCount; i++) {
-			g.draw(blocks[i]);
 		}
 	}
 

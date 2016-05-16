@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
@@ -13,6 +14,7 @@ public class Player extends Entity{
 	
 	private int health;
 	private int maxHealth;
+	private Rectangle attack;
 
 	public Player(TileMap tm) {
 		super(tm);
@@ -26,6 +28,8 @@ public class Player extends Entity{
 		movingRight = false;
 		movingUp = false;
 		movingDown = false;
+		
+		attacking = false;
 		
 		direction = Entity.DOWN;
 		
@@ -74,7 +78,19 @@ public class Player extends Entity{
 	
 	public void draw(Graphics2D g) {
 		g.drawImage(animation.getImage(), (int)x-width/2, (int)y-height/2, null);
-		g.draw(getRectangle());
+		if(attack != null) {
+			g.draw(attack);
+		}
+	}
+	
+	public void attack() {
+		if(!attacking) {
+			attacking = true;
+			switch(direction) {
+				case Entity.LEFT:
+					attack = new Rectangle((int)(x-(tm.getTileSize()*1.5)),(int)(y-(tm.getTileSize()/2)), tm.getTileSize(), tm.getTileSize());
+			}
+		}
 	}
 	
 	public void keyPressed(int k) {
@@ -98,6 +114,9 @@ public class Player extends Entity{
 				direction = Entity.DOWN;
 				movingDown = true;
 				movingUp = false;
+				break;
+			case KeyEvent.VK_SPACE:
+				attack();
 				break;
 		}
 	}

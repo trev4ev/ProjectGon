@@ -18,15 +18,17 @@ public abstract class Entity {
 	
 	protected int direction;
 
-	public static int UP = 0;
-	public static int RIGHT = 1;
-	public static int DOWN = 2;
-	public static int LEFT = 3;
+	public static final int UP = 0;
+	public static final int RIGHT = 1;
+	public static final int DOWN = 2;
+	public static final int LEFT = 3;
 	
 	protected boolean movingLeft;
 	protected boolean movingRight;
 	protected boolean movingUp;
 	protected boolean movingDown;
+	
+	protected boolean attacking;
 	
 	protected int width;
 	protected int height;
@@ -60,40 +62,33 @@ public abstract class Entity {
 	}
 	
 	public Rectangle getRectangle() {
-		return new Rectangle((int)x - cwidth/2, (int)y - cheight/2, cwidth, cheight);
+		return new Rectangle((int)(x + dx) - cwidth/2, (int)(y + dy)- cheight/2, cwidth, cheight);
 	}
 	
-	public void checkTileMapCollision() {
-		col = (int)x / tileSize;
-		row = (int)y / tileSize;
-		
-		xdest = x + dx;
-		ydest = y + dy;
-		
+	public void checkTileMapCollision() {		
 		xtemp = x;
 		ytemp = y;
 		
 		for(int i = 0; i < tm.getRectangleCount(); i++) {
 			if(tm.getBlocks()[i].intersects(getRectangle())) {
-				dx = 0;
-				dy = 0;
+				
 				if(movingLeft) {
-					xtemp += 3;
+					dx = 0;
 					movingLeft = false;
 				}
 				if(movingRight) {
-					xtemp -= 3;
+					dx = 0;
 					movingRight = false;
 				}
 				if(movingDown) {
-					ytemp -= 3;
+					dy = 0;
 					movingDown = false;
 				}
 				if(movingUp) {
-					ytemp += 3;
+					dy = 0;
 					movingUp = false;
 				}
-				
+				break;
 			}
 		}
 		ytemp+= dy;
