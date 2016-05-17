@@ -8,7 +8,6 @@ import tileMap.TileMap;
 public class Enemy extends Player{
 	
 	private int health;
-	private int maxHealth;
 	private Rectangle attack;
 	
 	private long startTime;
