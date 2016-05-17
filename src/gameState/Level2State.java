@@ -11,7 +11,7 @@ import main.GamePanel;
 import tileMap.Background;
 import tileMap.TileMap;
 
-public class Level1State extends GameState{
+public class Level2State extends GameState{
 	
 	private TileMap tm;
 	private Background bg;
@@ -20,7 +20,7 @@ public class Level1State extends GameState{
 	private Enemy e;
 	private ArrayList<Entity> entities;
 	
-	public Level1State(GameStateManager gsm) {
+	public Level2State(GameStateManager gsm) {
 		this.gsm = gsm;
 		init();
 	}
@@ -30,7 +30,7 @@ public class Level1State extends GameState{
 		bg = new Background("/Backgrounds/grassbg1.gif",0.1);
 		tm = new TileMap(30);
 		tm.loadTiles("/Tilesets/grasstileset.gif");
-		tm.loadMap("/Maps/room1.map");
+		tm.loadMap("/Maps/room2.map");
 		tm.setPosition(0, 0);
 		p = new Player(tm);
 		p.setPosition(GamePanel.WIDTH/2, GamePanel.HEIGHT/4);
@@ -42,10 +42,6 @@ public class Level1State extends GameState{
 	public void update() {
 		p.update();
 		e.update();
-	}
-	
-	public void nextLevel() {
-		gsm.setLevelState(new Level2State(gsm));
 	}
 
 	@Override
