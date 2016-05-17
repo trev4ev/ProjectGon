@@ -35,9 +35,11 @@ public class TileMap {
 	private int rowsDrawn;
 	private int colsDrawn;
 	
-	private Rectangle[] blocks;
+	private Rectangle[] walls;
+	private Rectangle[] doors;
 
-	private int rectangleCount = 0;
+	private int wallCount = 0;
+	private int doorCount = 0;
 	
 	public TileMap(int ts) {
 		tileSize = ts;
@@ -57,6 +59,8 @@ public class TileMap {
 				tiles[0][i] = new Tile(subImage, Tile.NORMAL);
 				subImage = tileSet.getSubimage(i * tileSize, tileSize, tileSize, tileSize);
 				tiles[1][i] = new Tile(subImage, Tile.BLOCKED);
+				subImage = tileSet.getSubimage(i * tileSize, tileSize, tileSize, tileSize);
+				tiles[2][i] = new Tile(subImage, Tile.DOOR);
  			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -65,7 +69,7 @@ public class TileMap {
 	
 	public void loadMap(String s) {
 		try {
-			blocks = new Rectangle[rowsDrawn*colsDrawn];
+			walls = new Rectangle[rowsDrawn*colsDrawn];
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			numCols = Integer.parseInt(br.readLine());
@@ -79,9 +83,13 @@ public class TileMap {
 				String[] tokens = line.split(delim);
 				for(int j = 0; j < numCols; j++) {
 					map[i][j] = Integer.parseInt(tokens[j]);
-					if(map[i][j] / numTiles > 0) {
-						blocks[rectangleCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
-						rectangleCount++;
+					if(map[i][j] / numTiles == 1) {
+						walls[wallCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
+						wallCount++;
+					}
+					if(map[i][j] / numTiles == 2) {
+						doors[doorCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
+						doorCount++;
 					}
 				}
 			}
@@ -130,12 +138,20 @@ public class TileMap {
 		this.y = y;
 	}
 	
-	public Rectangle[] getBlocks() {
-		return blocks;
+	public Rectangle[] getWalls() {
+		return walls;
 	}
 	
-	public int getRectangleCount() {
-		return rectangleCount;
+	public int getWallCount() {
+		return wallCount;
+	}
+	
+	public Rectangle[] getDoors(){
+		return doors;
+	}
+	
+	public int getDoorCount() {
+		return doorCount;
 	}
 	
 	public void draw(Graphics2D g) {

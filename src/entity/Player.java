@@ -60,6 +60,7 @@ public class Player extends Entity{
 	public void update() {
 		getNextPosition();
 		checkTileMapCollision();
+		checkDoorCollision();
 		setPosition(xtemp, ytemp);
 		animation.update();
 		if(attacking) {
@@ -68,6 +69,15 @@ public class Player extends Entity{
 				startTime = System.nanoTime();
 				attack = null;
 				attacking = false;
+			}
+		}
+	}
+	
+	public void checkDoorCollision() {		
+		for(int i = 0; i < tm.getDoorCount(); i++) {
+			if(tm.getDoors()[i].intersects(getRectangle())) {
+				
+				//switch to next stage
 			}
 		}
 	}

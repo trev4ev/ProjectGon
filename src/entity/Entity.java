@@ -72,8 +72,8 @@ public abstract class Entity {
 		xtemp = x;
 		ytemp = y;
 		
-		for(int i = 0; i < tm.getRectangleCount(); i++) {
-			if(tm.getBlocks()[i].intersects(getRectangle())) {
+		for(int i = 0; i < tm.getWallCount(); i++) {
+			if(tm.getWalls()[i].intersects(getRectangle())) {
 				
 				if(movingLeft) {
 					dx = 0;
