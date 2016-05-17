@@ -33,6 +33,7 @@ public class Enemy extends Player{
 		
 		speed = 0.5;
 	}
+	//comment
 	
 	public void update() {
 		move();
