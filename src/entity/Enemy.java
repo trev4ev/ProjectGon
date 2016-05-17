@@ -33,6 +33,7 @@ public class Enemy extends Player{
 		
 		speed = 0.5;
 	}
+	//comment
 	
 	public void update() {
 		move();
@@ -45,6 +46,7 @@ public class Enemy extends Player{
 		long elapsed = (System.nanoTime() - startTime)/1000000;
 		if(elapsed > moveDelay) {
 			attack();
+			moveDelay = (long) ((Math.random() * 1000) + 2000);
 			startTime = System.nanoTime();
 			movingLeft = !movingLeft;
 			movingRight = !movingRight;
