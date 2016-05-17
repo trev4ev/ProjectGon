@@ -15,19 +15,28 @@ public class Player extends Entity{
 	private int health;
 	private int maxHealth;
 	private Rectangle attack;
+	
+	private long startTime;
+	private long attackDelay;
+	
 
 	public Player(TileMap tm) {
 		super(tm);
 		
 		width = 30;
 		height = 30;
-		cwidth = 20;
-		cheight = 20;
+		cwidth = 25;
+		cheight = 25;
+		
+		startTime = System.nanoTime();
+		attackDelay = 150;
 		
 		movingLeft = false;
 		movingRight = false;
 		movingUp = false;
 		movingDown = false;
+		
+		speed = 2;
 		
 		attacking = false;
 		
@@ -53,26 +62,13 @@ public class Player extends Entity{
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
 		animation.update();
-	}
-	
-	public void getNextPosition() {	
-		if(movingLeft) {
-			dx = -1;
-		}
-		else if(movingRight) {
-			dx = 1;
-		}
-		else {
-			dx = 0;
-		}
-		if(movingDown) {
-			dy = 1;
-		}
-		else if(movingUp) {
-			dy = -1;
-		}
-		else {
-			dy = 0;
+		if(attacking) {
+			long elapsed = (System.nanoTime() - startTime)/1000000;
+			if(elapsed > attackDelay) {
+				startTime = System.nanoTime();
+				attack = null;
+				attacking = false;
+			}
 		}
 	}
 	
@@ -88,9 +84,20 @@ public class Player extends Entity{
 			attacking = true;
 			switch(direction) {
 				case Entity.LEFT:
-					attack = new Rectangle((int)(x-(tm.getTileSize()*1.5)),(int)(y-(tm.getTileSize()/2)), tm.getTileSize(), tm.getTileSize());
+					attack = new Rectangle((int)(x-(tileSize*1.5)),(int)(y-(tileSize/2)), tileSize, tileSize);
+					break;
+				case Entity.RIGHT:
+					attack = new Rectangle((int)(x+(tileSize/2)),(int)(y-(tileSize/2)), tileSize, tileSize);
+					break;
+				case Entity.UP:
+					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y-(tileSize*1.5)), tileSize, tileSize);
+					break;
+				case Entity.DOWN:
+					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y+(tileSize/2)), tileSize, tileSize);
+					break;
 			}
-		}
+			startTime = System.nanoTime();
+		}	
 	}
 	
 	public void keyPressed(int k) {

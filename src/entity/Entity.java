@@ -30,6 +30,8 @@ public abstract class Entity {
 	
 	protected boolean attacking;
 	
+	protected double speed;
+	
 	protected int width;
 	protected int height;
 	protected int cwidth;
@@ -53,6 +55,7 @@ public abstract class Entity {
 	public Entity(TileMap tm) {
 		this.tm = tm;
 		tileSize = tm.getTileSize();
+		speed = 1;
 	}
 	
 	public boolean intersects(Entity e) {
@@ -92,8 +95,28 @@ public abstract class Entity {
 			}
 		}
 		ytemp+= dy;
-		xtemp+= dx;
-		
+		xtemp+= dx;	
+	}
+	
+	public void getNextPosition() {	
+		if(movingLeft) {
+			dx = -1 * speed;
+		}
+		else if(movingRight) {
+			dx = speed;
+		}
+		else {
+			dx = 0;
+		}
+		if(movingDown) {
+			dy = speed;
+		}
+		else if(movingUp) {
+			dy = -1 * speed;
+		}
+		else {
+			dy = 0;
+		}
 	}
 	
 	public void setPosition(double x, double y) {
