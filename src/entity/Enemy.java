@@ -11,9 +11,12 @@ public class Enemy extends Player{
 	
 	private int health;
 	private Rectangle attack;
+	private int blockNum;
 
-	public Enemy(TileMap tm, GameState gs) {
+	public Enemy(TileMap tm, GameState gs, int i) {
 		super(tm, gs);
+		
+		blockNum = i;
 		
 		width = 30;
 		height = 30;
@@ -27,7 +30,7 @@ public class Enemy extends Player{
 		
 		attacking = false;
 		
-		speed = 0.5;
+		speed = 0.75;
 	}
 	//comment
 	
@@ -40,7 +43,7 @@ public class Enemy extends Player{
 			getNextPosition();
 			xtemp = x + dx;
 			ytemp = y + dy;
-			tm.getWalls()[tm.getWallCount() - 1] = getRectangle();
+			tm.getWalls()[blockNum] = getRectangle();
 			setPosition(xtemp, ytemp);
 		}
 		

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import gameState.GameState;
+import main.GamePanel;
 import tileMap.TileMap;
 
 public class Player extends Entity{
@@ -36,7 +37,7 @@ public class Player extends Entity{
 		movingUp = false;
 		movingDown = false;
 		
-		speed = 2;
+		speed = 1;
 		
 		attacking = false;
 		
@@ -76,9 +77,32 @@ public class Player extends Entity{
 	public void checkDoorCollision() {		
 		for(int i = 0; i < tm.getDoorCount(); i++) {
 			if(tm.getDoors()[i].intersects(getRectangle())) {
-				setPosition(x,height/2);
-				gs.nextState(0);
-				break;
+				if(y + tm.getTileSize() > GamePanel.HEIGHT) {
+					//bottom door
+					setPosition(x,height/2);
+					gs.nextState(2);
+					break;
+				}
+				else if(y - tm.getTileSize() < 0) {
+					//top door
+					setPosition(x,GamePanel.HEIGHT - height/2);
+					gs.nextState(0);
+					break;
+				}
+				else if(x + tm.getTileSize() > GamePanel.WIDTH) {
+					//right door
+					setPosition(width/2,y);
+					gs.nextState(1);
+					break;
+				}
+				else if(x - tm.getTileSize() < 0) {
+					//left door
+					setPosition(GamePanel.WIDTH - width/2,y);
+					gs.nextState(3);
+					break;
+				}
+				
+				
 			}
 		}
 	}
@@ -158,6 +182,10 @@ public class Player extends Entity{
 
 	public void setTileMap(TileMap tm) {
 		this.tm = tm;		
+	}
+
+	public void setGameState(GameState gs) {
+		this.gs = gs;
 	}
 
 }

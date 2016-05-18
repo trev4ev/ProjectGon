@@ -1,20 +1,13 @@
 package gameState;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.util.ArrayList;
-
 import entity.Enemy;
-import entity.Entity;
 import entity.Player;
 import main.GamePanel;
-import tileMap.Background;
-import tileMap.TileMap;
 
-public class Level2State extends LevelState{
-	
-	public Level2State(GameStateManager gsm, Player p) {
-		super(gsm, 2);
+public class Level3State extends LevelState{
+
+	public Level3State(GameStateManager gsm, Player p) {
+		super(gsm, 3);
 		this.gsm = gsm;
 		this.p = p;
 		init();
@@ -27,6 +20,10 @@ public class Level2State extends LevelState{
 		enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
 		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 		blocks++;
+		enemies.add(new Enemy(tm, this, blocks));
+		enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
+		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
+		blocks++;
 		tm.setWallCount(blocks);
 		for(int i = tm.getWallCount(); i < tm.getWalls().length; i++){
 			tm.getWalls()[i] = null;
@@ -35,8 +32,7 @@ public class Level2State extends LevelState{
 
 	
 	public void nextState(int i) {
-		tm.setWallCount(tm.getWallCount() - 1);
-		gsm.setLevelState(new Level3State(gsm, p));
+		tm.setWallCount(tm.getWallCount() - 2);
+		//gsm.setLevelState(new Level3State(gsm, p));
 	}
-
 }

@@ -173,6 +173,7 @@ public class TileMap {
 			}
 		}
 		for(int i = 0; i < wallCount; i++) {
+			g.setColor(Color.red);
 			g.draw(walls[i]);
 		}
 	}

@@ -27,6 +27,7 @@ public class LevelState extends GameState{
 	}
 
 	public void init() {
+		p.setGameState(this);
 		bg = new Background("/Backgrounds/grassbg1.gif",0.1);	
 		p.setTileMap(tm);
 		enemies = new ArrayList<Enemy>();
