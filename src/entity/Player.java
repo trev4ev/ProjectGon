@@ -7,21 +7,20 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import main.GamePanel;
+import gameState.GameState;
 import tileMap.TileMap;
 
 public class Player extends Entity{
 	
 	private int health;
 	private int maxHealth;
-	private Rectangle attack;
 	
 	private long startTime;
 	private long attackDelay;
 	
 
-	public Player(TileMap tm) {
-		super(tm);
+	public Player(TileMap tm, GameState gs) {
+		super(tm, gs);
 		
 		width = 30;
 		height = 30;
@@ -66,7 +65,7 @@ public class Player extends Entity{
 			long elapsed = (System.nanoTime() - startTime)/1000000;
 			if(elapsed > attackDelay) {
 				startTime = System.nanoTime();
-				attack = null;
+				gs. = null;
 				attacking = false;
 			}
 		}
