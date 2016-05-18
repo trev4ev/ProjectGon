@@ -40,7 +40,7 @@ public class LevelState extends GameState{
 		}
 	}
 	
-	public void nextState() {}
+	public void nextState(int i) {}
 
 	@Override
 	public void draw(Graphics2D g) {

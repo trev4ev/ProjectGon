@@ -76,8 +76,8 @@ public class Player extends Entity{
 	public void checkDoorCollision() {		
 		for(int i = 0; i < tm.getDoorCount(); i++) {
 			if(tm.getDoors()[i].intersects(getRectangle())) {
-				setPosition(50,50);
-				gs.nextState();
+				setPosition(x,height/2);
+				gs.nextState(0);
 				break;
 			}
 		}

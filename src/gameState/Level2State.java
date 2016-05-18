@@ -17,12 +17,17 @@ public class Level2State extends LevelState{
 		super(gsm, 2);
 		this.gsm = gsm;
 		this.p = p;
-		System.out.println(this.p);
 		init();
+	}
+	
+	public void init() {
+		super.init();
+		enemies.add(new Enemy(tm, this));
+		enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
 	}
 
 	
-	public void nextState() {
+	public void nextState(int i) {
 		//gsm.setLevelState(new Level2State(gsm));
 	}
 

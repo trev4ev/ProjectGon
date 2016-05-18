@@ -21,7 +21,7 @@ public class Level1State extends LevelState{
 		init();
 	}
 	
-	public void nextState() {
+	public void nextState(int i) {
 		gsm.setLevelState(new Level2State(gsm, p));
 	}
 

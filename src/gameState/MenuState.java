@@ -56,7 +56,7 @@ public class MenuState extends GameState{
 	private void select() {
 		switch(currentChoice) {
 			case 0:
-				nextState();
+				nextState(1);
 				break;
 			case 1:
 				break;
@@ -89,7 +89,7 @@ public class MenuState extends GameState{
 	public void keyReleased(int k) {}
 
 	@Override
-	public void nextState() {
+	public void nextState( int i ) {
 		gsm.setState(1);
 	}
 
