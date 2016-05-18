@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import gameState.GameState;
+import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
 
@@ -21,7 +22,7 @@ public class Player extends Entity{
 	private long attackDelay;
 	
 
-	public Player(TileMap tm, GameState gs) {
+	public Player(TileMap tm, LevelState gs) {
 		super(tm, gs);
 		
 		width = 30;
@@ -115,6 +116,7 @@ public class Player extends Entity{
 	}
 	
 	public void attack() {
+		gs.getEnemies();
 		if(!attacking) {
 			attacking = true;
 			switch(direction) {
@@ -184,7 +186,7 @@ public class Player extends Entity{
 		this.tm = tm;		
 	}
 
-	public void setGameState(GameState gs) {
+	public void setGameState(LevelState gs) {
 		this.gs = gs;
 	}
 

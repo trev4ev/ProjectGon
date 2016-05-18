@@ -3,13 +3,14 @@ package entity;
 import java.awt.Rectangle;
 
 import gameState.GameState;
+import gameState.LevelState;
 import tileMap.TileMap;
 
 public abstract class Entity {
 	
 	protected TileMap tm;
 	protected int tileSize;
-	protected GameState gs;
+	protected LevelState gs;
 	
 	protected double x; // refers to the middle of the character
 	protected double y;
@@ -52,7 +53,7 @@ public abstract class Entity {
 	protected int currentFrame;
 	protected int previousFrame;
 	
-	public Entity(TileMap tm, GameState gs) {
+	public Entity(TileMap tm, LevelState gs) {
 		this.gs = gs;
 		this.tm = tm;
 		tileSize = tm.getTileSize();

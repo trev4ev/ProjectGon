@@ -72,4 +72,8 @@ public class LevelState extends GameState{
 	public void keyReleased(int k) {
 		p.keyReleased(k);	
 	}
+	public ArrayList<Enemy> getEnemies()
+	{
+		return enemies;
+	}
 }

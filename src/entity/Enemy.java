@@ -3,7 +3,7 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import gameState.GameState;
+import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
 
@@ -13,7 +13,7 @@ public class Enemy extends Player{
 	private Rectangle attack;
 	private int blockNum;
 
-	public Enemy(TileMap tm, GameState gs, int i) {
+	public Enemy(TileMap tm, LevelState gs, int i) {
 		super(tm, gs);
 		
 		blockNum = i;
