@@ -44,8 +44,8 @@ public class TileMap {
 	
 	public TileMap(int ts) {
 		tileSize = ts;
-		rowsDrawn = GamePanel.HEIGHT / tileSize;
-		colsDrawn = GamePanel.WIDTH / tileSize;
+		rowsDrawn = GamePanel.HEIGHT / tileSize + 2;
+		colsDrawn = GamePanel.WIDTH / tileSize + 2;
 	}
 	
 	public void loadTiles(String s) {
@@ -88,11 +88,11 @@ public class TileMap {
 				for(int j = 0; j < numCols; j++) {
 					map[i][j] = Integer.parseInt(tokens[j]);
 					if(map[i][j] / numTiles == 1) {
-						walls[wallCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
+						walls[wallCount] = new Rectangle((int)x + j*tileSize,(int)y + i*tileSize,tileSize,tileSize);
 						wallCount++;
 					}
 					if(map[i][j] / numTiles == 2) {
-						doors[doorCount] = new Rectangle(j*tileSize,i*tileSize,tileSize,tileSize);
+						doors[doorCount] = new Rectangle((int)x + j*tileSize,(int)y + i*tileSize,tileSize,tileSize);
 						doorCount++;
 					}
 				}
@@ -171,6 +171,9 @@ public class TileMap {
 				g.drawImage(tiles[r][c].getImage(), (int)x + col * tileSize, (int)y + row * tileSize, null);
 				
 			}
+		}
+		for(int i = 0; i < wallCount; i++) {
+			g.draw(walls[i]);
 		}
 	}
 

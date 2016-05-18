@@ -75,7 +75,6 @@ public abstract class Entity {
 		
 		for(int i = 0; i < tm.getWallCount(); i++) {
 			if(tm.getWalls()[i].intersects(getRectangle())) {
-				
 				if(movingLeft) {
 					dx = 0;
 					movingLeft = false;
