@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+import entity.Entity;
 import tileMap.Background;
 
 public class MenuState extends GameState{
@@ -91,6 +92,9 @@ public class MenuState extends GameState{
 	public void nextState() {
 		gsm.setState(1);
 	}
+
+	@Override
+	public Entity getPlayer() {return null;}
 
 	
 }

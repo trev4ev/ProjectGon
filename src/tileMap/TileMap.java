@@ -1,5 +1,6 @@
 package tileMap;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -171,6 +172,10 @@ public class TileMap {
 				
 			}
 		}
+	}
+
+	public void setWallCount(int i) {
+		wallCount = i;
 	}
 
 }

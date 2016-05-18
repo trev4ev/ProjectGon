@@ -4,26 +4,21 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import gameState.GameState;
+import main.GamePanel;
 import tileMap.TileMap;
 
 public class Enemy extends Player{
 	
 	private int health;
 	private Rectangle attack;
-	
-	private long startTime;
-	private long moveDelay;
 
 	public Enemy(TileMap tm, GameState gs) {
 		super(tm, gs);
 		
 		width = 30;
 		height = 30;
-		cwidth = 25;
-		cheight = 25;
-		
-		startTime = System.nanoTime();
-		moveDelay = 2500;
+		cwidth = 30;
+		cheight = 30;
 		
 		movingLeft = true;
 		movingRight = false;
@@ -37,18 +32,23 @@ public class Enemy extends Player{
 	//comment
 	
 	public void update() {
-		move();
-		getNextPosition();
-		checkTileMapCollision();
-		setPosition(xtemp, ytemp);
+		if(intersects(gs.getPlayer())) {
+			attack();
+		}
+		else {
+			move();
+			getNextPosition();
+			xtemp = x + dx;
+			ytemp = y + dy;
+			tm.getWalls()[tm.getWallCount() - 1] = getRectangle();
+			setPosition(xtemp, ytemp);
+		}
+		
 	}
 	
 	public void move() {
-		long elapsed = (System.nanoTime() - startTime)/1000000;
-		if(elapsed > moveDelay) {
+		if(x < GamePanel.WIDTH*.25 || x >GamePanel.WIDTH*.75) {
 			attack();
-			moveDelay = (long) ((Math.random() * 1000) + 2000);
-			startTime = System.nanoTime();
 			movingLeft = !movingLeft;
 			movingRight = !movingRight;
 			

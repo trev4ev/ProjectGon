@@ -35,6 +35,10 @@ public class Level1State extends GameState{
 		enemies = new ArrayList<Enemy>();
 		enemies.add(new Enemy(tm, this));
 		enemies.get(0).setPosition(GamePanel.WIDTH*0.6, GamePanel.HEIGHT*0.75);
+		enemies.add(new Enemy(tm, this));
+		enemies.get(1).setPosition(GamePanel.WIDTH*0.6, GamePanel.HEIGHT*0.25);
+		tm.setWallCount(tm.getWallCount()+1);
+		tm.getWalls()[tm.getWallCount() - 1] = enemies.get(0).getRectangle();
 	}
 
 	@Override
@@ -47,7 +51,6 @@ public class Level1State extends GameState{
 	
 	public void nextState() {
 		gsm.setLevelState(new Level2State(gsm, p));
-		System.out.println("Level 2");
 	}
 
 	@Override
@@ -60,6 +63,10 @@ public class Level1State extends GameState{
 		for(Enemy e:enemies) {
 			e.draw(g);
 		}
+	}
+	
+	public Entity getPlayer() {
+		return p;
 	}
 
 	@Override

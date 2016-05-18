@@ -49,6 +49,10 @@ public class Level2State extends GameState{
 	public void nextState() {
 		//gsm.setLevelState(new Level2State(gsm));
 	}
+	
+	public Entity getPlayer() {
+		return p;
+	}
 
 	@Override
 	public void draw(Graphics2D g) {
