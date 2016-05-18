@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import main.GamePanel;
+import gameState.GameState;
 import tileMap.TileMap;
 
 public class Player extends Entity{
@@ -20,8 +20,8 @@ public class Player extends Entity{
 	private long attackDelay;
 	
 
-	public Player(TileMap tm) {
-		super(tm);
+	public Player(TileMap tm, GameState gs) {
+		super(tm, gs);
 		
 		width = 30;
 		height = 30;
@@ -60,7 +60,6 @@ public class Player extends Entity{
 	public void update() {
 		getNextPosition();
 		checkTileMapCollision();
-		checkDoorCollision();
 		setPosition(xtemp, ytemp);
 		animation.update();
 		if(attacking) {
@@ -71,13 +70,15 @@ public class Player extends Entity{
 				attacking = false;
 			}
 		}
+		checkDoorCollision();
 	}
 	
 	public void checkDoorCollision() {		
 		for(int i = 0; i < tm.getDoorCount(); i++) {
 			if(tm.getDoors()[i].intersects(getRectangle())) {
-				
-				//switch to next stage
+				setPosition(50,50);
+				gs.nextState();
+				break;
 			}
 		}
 	}
@@ -153,6 +154,10 @@ public class Player extends Entity{
 				movingDown = false;
 				break;
 		}
+	}
+
+	public void setTileMap(TileMap tm) {
+		this.tm = tm;		
 	}
 
 }

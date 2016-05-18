@@ -51,7 +51,7 @@ public class TileMap {
 		try {
 			tileSet = ImageIO.read(getClass().getResourceAsStream(s));
 			numTiles = tileSet.getWidth() / tileSize;
-			tiles = new Tile[2][numTiles];
+			tiles = new Tile[3][numTiles];
 			
 			BufferedImage subImage;
 			for(int i = 0; i < numTiles; i++) {
@@ -70,6 +70,7 @@ public class TileMap {
 	public void loadMap(String s) {
 		try {
 			walls = new Rectangle[rowsDrawn*colsDrawn];
+			doors = new Rectangle[8];
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			numCols = Integer.parseInt(br.readLine());
@@ -80,7 +81,9 @@ public class TileMap {
 			String delim = "\\s+";
 			for(int i = 0; i < numRows; i++) {
 				String line = br.readLine();
-				String[] tokens = line.split(delim);
+				String[] tokens = 
+						line.split(
+								delim);
 				for(int j = 0; j < numCols; j++) {
 					map[i][j] = Integer.parseInt(tokens[j]);
 					if(map[i][j] / numTiles == 1) {

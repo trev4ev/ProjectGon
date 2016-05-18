@@ -16,9 +16,7 @@ public class Level1State extends GameState{
 	private TileMap tm;
 	private Background bg;
 	private Player p;
-	private Player p2;
-	private Enemy e;
-	private ArrayList<Entity> entities;
+	private ArrayList<Enemy> enemies;
 	
 	public Level1State(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -32,20 +30,23 @@ public class Level1State extends GameState{
 		tm.loadTiles("/Tilesets/grasstileset.gif");
 		tm.loadMap("/Maps/room1.map");
 		tm.setPosition(0, 0);
-		p = new Player(tm);
+		p = new Player(tm, this);
 		p.setPosition(GamePanel.WIDTH/2, GamePanel.HEIGHT/4);
-		e = new Enemy(tm);
-		e.setPosition(GamePanel.WIDTH*0.6, GamePanel.HEIGHT*0.75);
+		enemies = new ArrayList<Enemy>();
+		enemies.add(new Enemy(tm, this));
+		enemies.get(0).setPosition(GamePanel.WIDTH*0.6, GamePanel.HEIGHT*0.75);
 	}
 
 	@Override
 	public void update() {
 		p.update();
-		e.update();
+		for(Enemy e:enemies) {
+			e.update();
+		}
 	}
 	
-	public void nextLevel() {
-		gsm.setLevelState(new Level2State(gsm));
+	public void nextState() {
+		gsm.setLevelState(new Level2State(gsm, p));
 	}
 
 	@Override
@@ -55,7 +56,9 @@ public class Level1State extends GameState{
 		bg.draw(g);
 		tm.draw(g);
 		p.draw(g);
-		e.draw(g);
+		for(Enemy e:enemies) {
+			e.draw(g);
+		}
 	}
 
 	@Override
