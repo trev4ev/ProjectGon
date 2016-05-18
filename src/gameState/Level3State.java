@@ -10,18 +10,21 @@ public class Level3State extends LevelState{
 		super(gsm, 3);
 		this.gsm = gsm;
 		this.p = p;
-		init();
 	}
 	
 	public void init() {
 		super.init();
 		int blocks = tm.getWallCount();
-		enemies.add(new Enemy(tm, this, blocks));
-		enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
+		if(!initialized) {
+			initialized = true;
+			enemies.add(new Enemy(tm, this, blocks));
+			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
+			enemies.add(new Enemy(tm, this, blocks+1));
+			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
+
+		}	
 		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 		blocks++;
-		enemies.add(new Enemy(tm, this, blocks));
-		enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
 		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 		blocks++;
 		tm.setWallCount(blocks);
@@ -33,6 +36,13 @@ public class Level3State extends LevelState{
 	
 	public void nextState(int i) {
 		tm.setWallCount(tm.getWallCount() - 2);
-		//gsm.setLevelState(new Level3State(gsm, p));
+		switch(i) {
+		case 0:
+			//gsm.addLevelState(new Level1State(gsm));
+			break;
+		case 3:
+			gsm.setLevelState(null, 2);
+			break;
+	}
 	}
 }

@@ -17,14 +17,16 @@ public class Level2State extends LevelState{
 		super(gsm, 2);
 		this.gsm = gsm;
 		this.p = p;
-		init();
 	}
 	
 	public void init() {
 		super.init();
 		int blocks = tm.getWallCount();
-		enemies.add(new Enemy(tm, this, blocks));
-		enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
+		if(!initialized) {
+			initialized = true;
+			enemies.add(new Enemy(tm, this, blocks));
+			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
+		}
 		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 		blocks++;
 		tm.setWallCount(blocks);
@@ -36,7 +38,15 @@ public class Level2State extends LevelState{
 	
 	public void nextState(int i) {
 		tm.setWallCount(tm.getWallCount() - 1);
-		gsm.setLevelState(new Level3State(gsm, p));
+		switch(i) {
+			case 0:
+				gsm.setLevelState(null, 1);
+				break;
+			case 1:
+				gsm.setLevelState(new Level3State(gsm, p), 3);
+				break;
+		}
+		
 	}
 
 }

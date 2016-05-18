@@ -22,7 +22,7 @@ public class Level1State extends LevelState{
 	}
 	
 	public void nextState(int i) {
-		gsm.setLevelState(new Level2State(gsm, p));
+		gsm.setLevelState(new Level2State(gsm, p), 2);
 	}
 
 }

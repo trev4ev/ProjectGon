@@ -16,6 +16,7 @@ public class LevelState extends GameState{
 	public Background bg;
 	public Player p;
 	public ArrayList<Enemy> enemies;
+	public boolean initialized = false;
 	
 	public LevelState(GameStateManager gsm, int i) {
 		this.gsm = gsm;
@@ -27,10 +28,12 @@ public class LevelState extends GameState{
 	}
 
 	public void init() {
-		p.setGameState(this);
-		bg = new Background("/Backgrounds/grassbg1.gif",0.1);	
+		p.setGameState(this);	
 		p.setTileMap(tm);
-		enemies = new ArrayList<Enemy>();
+		if(!initialized) {
+			bg = new Background("/Backgrounds/grassbg1.gif",0.1);
+			enemies = new ArrayList<Enemy>();
+		}
 	}
 
 	@Override

@@ -66,4 +66,8 @@ public class Enemy extends Player{
 		g.drawRect((int)x-width/2, (int)y - height/2, width, height);
 	}
 
+	public int getBlockNum() {
+		return blockNum;
+	}
+
 }

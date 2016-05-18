@@ -12,22 +12,29 @@ public class GameStateManager {
 
 	public static final int MENUSTATE = 0;
 	public static final int LEVEL1STATE = 1;
-	public static final int LEVEL2STATE = 2;
 	
 	public GameStateManager() {
-		gameStates = new ArrayList<GameState>();
+		gameStates = new ArrayList<GameState>(25);
+		for(int i = 0; i < 25; i++) {
+			gameStates.add(null);
+		}
 		currentState = MENUSTATE;
-		gameStates.add(new MenuState(this));	
-		gameStates.add(new Level1State(this));
+		gameStates.set(0,new MenuState(this));	
+		gameStates.set(1, new Level1State(this));
 	}
 	
 	public void setState(int state) {
 		currentState = state;
 		gameStates.get(currentState).init();
 	}
+
 	
-	public void setLevelState(GameState gs) {
-		gameStates.set(1, gs);
+	public void setLevelState(GameState gs, int i) {
+		if(gameStates.get(i) == null) {
+			gameStates.set(i, gs);
+		}
+		setState(i);
+		
 	}
 	
 	public void update() {
