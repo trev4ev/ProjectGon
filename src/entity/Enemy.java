@@ -50,7 +50,12 @@ public class Enemy extends Player{
 			startTime = System.nanoTime();
 			movingLeft = !movingLeft;
 			movingRight = !movingRight;
+			
 		}
+	}
+	
+	public void attack() {
+		
 	}
 	
 	public void draw(Graphics2D g) {
