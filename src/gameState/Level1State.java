@@ -47,6 +47,7 @@ public class Level1State extends GameState{
 	
 	public void nextState() {
 		gsm.setLevelState(new Level2State(gsm, p));
+		System.out.println("Level 2");
 	}
 
 	@Override
