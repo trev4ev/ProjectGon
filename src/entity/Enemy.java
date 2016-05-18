@@ -3,7 +3,6 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import gameState.GameState;
 import tileMap.TileMap;
 
 public class Enemy extends Player{
@@ -14,8 +13,8 @@ public class Enemy extends Player{
 	private long startTime;
 	private long moveDelay;
 
-	public Enemy(TileMap tm, GameState gs) {
-		super(tm, gs);
+	public Enemy(TileMap tm) {
+		super(tm);
 		
 		width = 30;
 		height = 30;
