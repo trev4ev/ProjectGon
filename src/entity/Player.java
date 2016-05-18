@@ -116,7 +116,6 @@ public class Player extends Entity{
 	}
 	
 	public void attack() {
-		gs.getEnemies();
 		if(!attacking) {
 			attacking = true;
 			switch(direction) {
@@ -132,6 +131,11 @@ public class Player extends Entity{
 				case Entity.DOWN:
 					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y+(tileSize/2)), tileSize, tileSize);
 					break;
+			}
+			for(Enemy e: gs.getEnemies()) {
+				if(attack.intersects(e.getRectangle())) {
+					e.hit();
+				}
 			}
 			startTime = System.nanoTime();
 		}	

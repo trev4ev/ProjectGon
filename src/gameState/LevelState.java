@@ -16,6 +16,7 @@ public class LevelState extends GameState{
 	public Background bg;
 	public Player p;
 	public ArrayList<Enemy> enemies;
+	public int enemyCount;
 	public boolean initialized = false;
 	
 	public LevelState(GameStateManager gsm, int i) {
@@ -24,7 +25,12 @@ public class LevelState extends GameState{
 		tm.loadTiles("/Tilesets/grasstileset.gif");
 		tm.setPosition(tm.getTileSize() * -1, tm.getTileSize() * -1);
 		tm.loadMap("/Maps/room" + i + ".map");
+		enemyCount = 0;
 		
+	}
+	
+	public void removeEnemy() {
+		enemyCount--;
 	}
 
 	public void init() {

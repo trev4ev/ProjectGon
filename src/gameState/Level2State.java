@@ -25,6 +25,7 @@ public class Level2State extends LevelState{
 		if(!initialized) {
 			initialized = true;
 			enemies.add(new Enemy(tm, this, blocks));
+			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
 		}
 		tm.getWalls()[blocks] = enemies.get(0).getRectangle();

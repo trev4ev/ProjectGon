@@ -18,8 +18,10 @@ public class Level3State extends LevelState{
 		if(!initialized) {
 			initialized = true;
 			enemies.add(new Enemy(tm, this, blocks));
+			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
 			enemies.add(new Enemy(tm, this, blocks+1));
+			enemyCount++;
 			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
 
 		}	

@@ -31,6 +31,8 @@ public class Enemy extends Player{
 		attacking = false;
 		
 		speed = 0.75;
+		
+		health = 1;
 	}
 	//comment
 	
@@ -46,6 +48,11 @@ public class Enemy extends Player{
 			tm.getWalls()[blockNum] = getRectangle();
 			setPosition(xtemp, ytemp);
 		}
+		if(health <= 0) {
+			x = tileSize * -1;
+			y = tileSize * -1;
+			gs.removeEnemy();
+		}
 		
 	}
 	
@@ -56,6 +63,10 @@ public class Enemy extends Player{
 			movingRight = !movingRight;
 			
 		}
+	}
+	
+	public void hit() {
+		health--;
 	}
 	
 	public void attack() {
