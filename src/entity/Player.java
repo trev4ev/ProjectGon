@@ -141,16 +141,16 @@ public class Player extends Entity{
 //					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y+(tileSize/2)), tileSize, tileSize);
 //					break;
 				case Entity.LEFT:
-					attack = new Rectangle((int)(x-(width/2 + 10)),(int)(y-(height/2)), 10, height);
+					attack = new Rectangle((int)(x-(width/2 + 20)),(int)(y-(height/2)), 20, height);
 					break;
 				case Entity.RIGHT:
-					attack = new Rectangle((int)(x+(width/2)),(int)(y-(height/2)), 10, height);
+					attack = new Rectangle((int)(x+(width/2)),(int)(y-(height/2)), 20, height);
 					break;
 				case Entity.UP:
-					attack = new Rectangle((int)(x-(width/2)),(int)(y-(height/2 + 10)), width, 10);
+					attack = new Rectangle((int)(x-(width/2)),(int)(y-(height/2 + 20)), width, 20);
 					break;
 				case Entity.DOWN:
-					attack = new Rectangle((int)(x-(width/2)),(int)(y+(height/2)), width, 10);
+					attack = new Rectangle((int)(x-(width/2)),(int)(y+(height/2)), width, 20);
 					break;
 			}
 			for(Enemy e: gs.getEnemies()) {

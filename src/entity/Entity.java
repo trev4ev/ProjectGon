@@ -31,6 +31,7 @@ public abstract class Entity {
 	
 	protected boolean attacking;
 	protected boolean canAttack;
+	protected boolean isAlive;
 	
 	protected double speed;
 	
