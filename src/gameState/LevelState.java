@@ -18,19 +18,34 @@ public class LevelState extends GameState{
 	public ArrayList<Enemy> enemies;
 	public int enemyCount;
 	public boolean initialized = false;
+	public int level;
 	
 	public LevelState(GameStateManager gsm, int i) {
 		this.gsm = gsm;
+		level = i;
 		tm = new TileMap(30);
 		tm.loadTiles("/Tilesets/grasstileset.gif");
 		tm.setPosition(tm.getTileSize() * -1, tm.getTileSize() * -1);
-		tm.loadMap("/Maps/room" + i + ".map");
-		enemyCount = 0;
+		if(!initialized) {
+			tm.loadMap("/Maps/room" + level + ".map");
+			enemyCount = 0;
+		}
+		else {
+			loadSecondMap();
+		}
 		
 	}
 	
 	public void removeEnemy() {
 		enemyCount--;
+		tm.setWallCount(tm.getWallCount()-1);
+		if(enemyCount <= 0) {
+			loadSecondMap();
+		}
+	}
+	
+	public void loadSecondMap() {
+		tm.loadMap("/Maps/room" + level + "open.map");
 	}
 
 	public void init() {

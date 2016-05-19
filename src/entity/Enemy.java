@@ -30,7 +30,7 @@ public class Enemy extends Player{
 		
 		attacking = false;
 		
-		speed = 0.75;
+		speed = 1.5;
 		
 		health = 1;
 	}
@@ -51,7 +51,8 @@ public class Enemy extends Player{
 		if(health <= 0) {
 			x = tileSize * -1;
 			y = tileSize * -1;
-			gs.removeEnemy();
+			health = 1;
+			gs.removeEnemy();		
 		}
 		
 	}

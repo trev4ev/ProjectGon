@@ -70,6 +70,8 @@ public class TileMap {
 	
 	public void loadMap(String s) {
 		try {
+			wallCount = 0;
+			doorCount = 0;
 			walls = new Rectangle[rowsDrawn*colsDrawn];
 			doors = new Rectangle[8];
 			InputStream in = getClass().getResourceAsStream(s);

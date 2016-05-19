@@ -18,8 +18,9 @@ public class Player extends Entity{
 	private int maxHealth;
 	private Rectangle attack;
 	
-	private long startTime;
+	private long attackStartTime;
 	private long attackDelay;
+	private long attackCooldown;
 	
 
 	public Player(TileMap tm, LevelState gs) {
@@ -30,17 +31,19 @@ public class Player extends Entity{
 		cwidth = 25;
 		cheight = 25;
 		
-		startTime = System.nanoTime();
+		attackStartTime = System.nanoTime();
 		attackDelay = 150;
+		attackCooldown = 650;
 		
 		movingLeft = false;
 		movingRight = false;
 		movingUp = false;
 		movingDown = false;
 		
-		speed = 3;
+		speed = 2;
 		
 		attacking = false;
+		canAttack = true;
 		
 		direction = Entity.DOWN;
 		
@@ -65,11 +68,16 @@ public class Player extends Entity{
 		setPosition(xtemp, ytemp);
 		animation.update();
 		if(attacking) {
-			long elapsed = (System.nanoTime() - startTime)/1000000;
+			long elapsed = (System.nanoTime() - attackStartTime)/1000000;
 			if(elapsed > attackDelay) {
-				startTime = System.nanoTime();
 				attack = null;
 				attacking = false;
+			}
+		}
+		if(!canAttack) {
+			long elapsed = (System.nanoTime() - attackStartTime)/1000000;
+			if(elapsed > attackCooldown) {
+				canAttack = true;			
 			}
 		}
 		checkDoorCollision();
@@ -116,20 +124,33 @@ public class Player extends Entity{
 	}
 	
 	public void attack() {
-		if(!attacking) {
+		if(!attacking && canAttack) {
 			attacking = true;
+			canAttack = false;
 			switch(direction) {
+//				case Entity.LEFT:
+//					attack = new Rectangle((int)(x-(tileSize*1.5)),(int)(y-(tileSize/2)), tileSize, tileSize);
+//					break;
+//				case Entity.RIGHT:
+//					attack = new Rectangle((int)(x+(tileSize/2)),(int)(y-(tileSize/2)), tileSize, tileSize);
+//					break;
+//				case Entity.UP:
+//					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y-(tileSize*1.5)), tileSize, tileSize);
+//					break;
+//				case Entity.DOWN:
+//					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y+(tileSize/2)), tileSize, tileSize);
+//					break;
 				case Entity.LEFT:
-					attack = new Rectangle((int)(x-(tileSize*1.5)),(int)(y-(tileSize/2)), tileSize, tileSize);
+					attack = new Rectangle((int)(x-(width/2 + 10)),(int)(y-(height/2)), 10, height);
 					break;
 				case Entity.RIGHT:
-					attack = new Rectangle((int)(x+(tileSize/2)),(int)(y-(tileSize/2)), tileSize, tileSize);
+					attack = new Rectangle((int)(x+(width/2)),(int)(y-(height/2)), 10, height);
 					break;
 				case Entity.UP:
-					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y-(tileSize*1.5)), tileSize, tileSize);
+					attack = new Rectangle((int)(x-(width/2)),(int)(y-(height/2 + 10)), width, 10);
 					break;
 				case Entity.DOWN:
-					attack = new Rectangle((int)(x-(tileSize/2)),(int)(y+(tileSize/2)), tileSize, tileSize);
+					attack = new Rectangle((int)(x-(width/2)),(int)(y+(height/2)), width, 10);
 					break;
 			}
 			for(Enemy e: gs.getEnemies()) {
@@ -137,7 +158,8 @@ public class Player extends Entity{
 					e.hit();
 				}
 			}
-			startTime = System.nanoTime();
+			attackStartTime = System.nanoTime();
+			
 		}	
 	}
 	
