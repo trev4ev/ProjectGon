@@ -47,6 +47,9 @@ public class Player extends Entity{
 		
 		direction = Entity.DOWN;
 		
+		maxHealth = 5;
+		health = maxHealth;
+		
 		animation = new Animation();
 		try {
 			BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/playersprites.gif"));
@@ -121,6 +124,10 @@ public class Player extends Entity{
 		if(attack != null) {
 			g.draw(attack);
 		}
+	}
+	
+	public void hit() {
+		health--;
 	}
 	
 	public void attack() {

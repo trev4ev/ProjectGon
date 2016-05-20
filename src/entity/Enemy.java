@@ -97,6 +97,9 @@ public class Enemy extends Player{
 			attacking = true;
 			attack[0] = new Rectangle((int) (x - (width*1.5)), (int)y-(height/2), width, height);
 			attack[1] = new Rectangle((int) (x + (width*0.5)), (int)y-(height/2), width, height);
+			if(attack[1].intersects(gs.getPlayer().getRectangle()) || attack[0].intersects(gs.getPlayer().getRectangle())) {
+				System.out.println("Hit!");
+			}
 			attackStartTime = System.nanoTime();
 		}
 	}
