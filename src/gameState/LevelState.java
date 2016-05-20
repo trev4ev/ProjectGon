@@ -32,8 +32,7 @@ public class LevelState extends GameState{
 		}
 		else {
 			loadSecondMap();
-		}
-		
+		}		
 	}
 	
 	public void removeEnemy() {
