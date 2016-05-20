@@ -41,7 +41,7 @@ public class Enemy extends Player{
 		
 		attacking = false;
 		
-		speed = 1.5;
+		speed = 2;
 		
 		health = 1;
 	}
@@ -88,6 +88,12 @@ public class Enemy extends Player{
 			attack();
 			movingLeft = !movingLeft;
 			movingRight = !movingRight;
+		}
+		if(x == GamePanel.WIDTH/2) {
+			if((int)(Math.random()*2) == 0) {
+				movingLeft = !movingLeft;
+				movingRight = !movingRight;
+			}
 		}
 	}
 	

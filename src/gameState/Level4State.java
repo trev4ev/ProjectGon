@@ -33,11 +33,13 @@ public class Level4State extends LevelState{
 		for(int i = tm.getWallCount(); i < tm.getWalls().length; i++){
 			tm.getWalls()[i] = null;
 		}
+		System.out.println(tm.getWallCount());
 	}
 
 	
 	public void nextState(int i) {
 		tm.setWallCount(tm.getWallCount() - 2);
+		System.out.println(tm.getWallCount());
 		switch(i) {
 		case 0:
 			//gsm.addLevelState(new Level1State(gsm));

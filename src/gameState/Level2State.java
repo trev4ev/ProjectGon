@@ -34,6 +34,7 @@ public class Level2State extends LevelState{
 		for(int i = tm.getWallCount(); i < tm.getWalls().length; i++){
 			tm.getWalls()[i] = null;
 		}
+		System.out.println(tm.getWallCount());
 	}
 
 	
