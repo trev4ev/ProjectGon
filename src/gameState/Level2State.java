@@ -38,7 +38,6 @@ public class Level2State extends LevelState{
 
 	
 	public void nextState(int i) {
-		tm.setWallCount(tm.getWallCount() - 1);
 		switch(i) {
 			case 0:
 				gsm.setLevelState(null, 1);

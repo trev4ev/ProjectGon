@@ -38,7 +38,6 @@ public class LevelState extends GameState{
 	
 	public void removeEnemy() {
 		enemyCount--;
-		tm.setWallCount(tm.getWallCount()-1);
 		if(enemyCount <= 0) {
 			loadSecondMap();
 		}

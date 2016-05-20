@@ -40,6 +40,7 @@ public class TileMap {
 	private Rectangle[] doors;
 
 	private int wallCount = 0;
+	private int originalWallCount = 0;
 	private int doorCount = 0;
 	
 	public TileMap(int ts) {
@@ -92,6 +93,7 @@ public class TileMap {
 					if(map[i][j] / numTiles == 1) {
 						walls[wallCount] = new Rectangle((int)x + j*tileSize,(int)y + i*tileSize,tileSize,tileSize);
 						wallCount++;
+						originalWallCount++;
 					}
 					if(map[i][j] / numTiles == 2) {
 						doors[doorCount] = new Rectangle((int)x + j*tileSize,(int)y + i*tileSize,tileSize,tileSize);
@@ -152,6 +154,10 @@ public class TileMap {
 		return wallCount;
 	}
 	
+	public int getOriginalWallCount() {
+		return originalWallCount;
+	}
+	
 	public Rectangle[] getDoors(){
 		return doors;
 	}
@@ -174,10 +180,10 @@ public class TileMap {
 				
 			}
 		}
-//		for(int i = 0; i < wallCount; i++) {
-//			g.setColor(Color.red);
-//			g.draw(walls[i]);
-//		}
+		for(int i = 0; i < wallCount; i++) {
+			g.setColor(Color.red);
+			g.draw(walls[i]);
+		}
 	}
 
 	public void setWallCount(int i) {
