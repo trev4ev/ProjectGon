@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -121,6 +122,10 @@ public class Player extends Entity{
 	
 	public void draw(Graphics2D g) {
 		g.drawImage(animation.getImage(), (int)x-width/2, (int)y-height/2, null);
+		g.setColor(Color.black);
+		g.drawRect(GamePanel.WIDTH/8 - 31, 9, maxHealth * 12 + 1, 11);
+		g.setColor(Color.red);
+		g.fillRect(GamePanel.WIDTH/8 - 30, 10, health * 12, 10);
 		if(attack != null) {
 			g.draw(attack);
 		}
@@ -128,6 +133,9 @@ public class Player extends Entity{
 	
 	public void hit() {
 		health--;
+		if(health <= 0) {
+			// gameEnd
+		}
 	}
 	
 	public void attack() {

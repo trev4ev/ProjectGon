@@ -42,8 +42,8 @@ public class Level4State extends LevelState{
 		case 0:
 			//gsm.addLevelState(new Level1State(gsm));
 			break;
-		case 3:
-			//gsm.setLevelState(null, 2);
+		case 2:
+			gsm.setLevelState(null, 3);
 			break;
 	}
 	}

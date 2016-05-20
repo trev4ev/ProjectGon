@@ -77,7 +77,7 @@ public class LevelState extends GameState{
 		}
 	}
 	
-	public Entity getPlayer() {
+	public Player getPlayer() {
 		return p;
 	}
 

@@ -1,5 +1,6 @@
 package entity;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
@@ -21,7 +22,7 @@ public class Enemy extends Player{
 		
 		isAlive = true;
 		
-		attack = new Rectangle[2];
+		attack = new Rectangle[4];
 		
 		blockNum = i;
 		
@@ -51,8 +52,9 @@ public class Enemy extends Player{
 			if(attacking) {
 				long elapsed = (System.nanoTime() - attackStartTime)/1000000;
 				if(elapsed > attackDelay) {
-					attack[0] = null;
-					attack[1] = null;
+					for(Rectangle r: attack) {
+						r = null;
+					}
 					attacking = false;
 				}
 			}
@@ -71,8 +73,9 @@ public class Enemy extends Player{
 				x = tileSize * -1;
 				y = tileSize * -1;
 				isAlive = false;
-				attack[0] = null;
-				attack[1] = null;
+				for(Rectangle r: attack) {
+					r = null;
+				}
 				attacking = false;
 				tm.getWalls()[blockNum] = getRectangle();
 				gs.removeEnemy();
@@ -97,18 +100,26 @@ public class Enemy extends Player{
 			attacking = true;
 			attack[0] = new Rectangle((int) (x - (width*1.5)), (int)y-(height/2), width, height);
 			attack[1] = new Rectangle((int) (x + (width*0.5)), (int)y-(height/2), width, height);
-			if(attack[1].intersects(gs.getPlayer().getRectangle()) || attack[0].intersects(gs.getPlayer().getRectangle())) {
-				System.out.println("Hit!");
+			attack[2] = new Rectangle((int)(x-(width/2)),(int)(y-(height*1.5)), width, height);
+			attack[3] = new Rectangle((int)(x-(width/2)),(int)(y+(height/2)), width, height);
+			
+			for(Rectangle r: attack) {
+				if(r.intersects(gs.getPlayer().getRectangle())) {
+					gs.getPlayer().hit();
+				}
 			}
 			attackStartTime = System.nanoTime();
 		}
 	}
 	
 	public void draw(Graphics2D g) {
+		g.setColor(Color.red);
 		g.drawRect((int)x-width/2, (int)y - height/2, width, height);
 		if(attacking) {
-			g.draw(attack[0]);
-			g.draw(attack[1]);
+			g.setColor(Color.green);
+			for(Rectangle r:attack) {
+				g.draw(r);
+			}
 		}
 	}
 
