@@ -15,7 +15,6 @@ public class Level1State extends LevelState{
 	
 	public Level1State(GameStateManager gsm) {
 		super(gsm, 1);
-		this.gsm = gsm;
 		p = new Player(tm, this);
 		p.setPosition(GamePanel.WIDTH * .5, GamePanel.HEIGHT * .25);
 		init();

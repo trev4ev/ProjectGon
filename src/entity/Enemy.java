@@ -32,7 +32,7 @@ public class Enemy extends Player{
 		cheight = 30;
 		
 		attackStartTime = System.nanoTime();
-		attackDelay = 300;
+		attackDelay = 400;
 		
 		movingLeft = true;
 		movingRight = false;
@@ -91,6 +91,7 @@ public class Enemy extends Player{
 		}
 		if(x == GamePanel.WIDTH/2) {
 			if((int)(Math.random()*2) == 0) {
+				attack();
 				movingLeft = !movingLeft;
 				movingRight = !movingRight;
 			}

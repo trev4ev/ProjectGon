@@ -23,22 +23,20 @@ public class Level3State extends LevelState{
 			enemies.add(new Enemy(tm, this, blocks+1));
 			enemyCount++;
 			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
+
+			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
+			blocks++;
+			tm.getWalls()[blocks] = enemies.get(1).getRectangle();
+			blocks++;
+			tm.setWallCount(blocks);
 		}	
-		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
-		blocks++;
-		tm.getWalls()[blocks] = enemies.get(1).getRectangle();
-		blocks++;
-		tm.setWallCount(blocks);
 		for(int i = tm.getWallCount(); i < tm.getWalls().length; i++){
 			tm.getWalls()[i] = null;
 		}
-		System.out.println(tm.getWallCount());
 	}
 
 	
 	public void nextState(int i) {
-		tm.setWallCount(tm.getWallCount()-2);
-		System.out.println(tm.getWallCount());
 		switch(i) {
 		case 0:
 			gsm.setLevelState(new Level4State(gsm, p), 4);

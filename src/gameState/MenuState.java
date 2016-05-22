@@ -45,10 +45,11 @@ public class MenuState extends GameState{
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++)
 		{
-			if(currentChoice == i)
+			if(currentChoice == i) {
 				g.setColor(new Color(102,45,145));
-			else
-				g.setColor(Color.black);
+				g.fillOval(125, 130 + i*15, 10, 10);
+			}
+			g.setColor(Color.black);
 			g.drawString(options[i], 140, 140 + i*15);
 		}
 	}

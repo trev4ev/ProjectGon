@@ -31,7 +31,7 @@ public class LevelState extends GameState{
 			enemyCount = 0;
 		}
 		else {
-			loadSecondMap();
+			//loadSecondMap();
 		}		
 	}
 	

@@ -27,19 +27,18 @@ public class Level2State extends LevelState{
 			enemies.add(new Enemy(tm, this, blocks));
 			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT - (tm.getTileSize()*1.5 + 10));
+
+			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
+			blocks++;
+			tm.setWallCount(blocks);
 		}
-		tm.getWalls()[blocks] = enemies.get(0).getRectangle();
-		blocks++;
-		tm.setWallCount(blocks);
 		for(int i = tm.getWallCount(); i < tm.getWalls().length; i++){
 			tm.getWalls()[i] = null;
 		}
-		System.out.println(tm.getWallCount());
 	}
 
 	
 	public void nextState(int i) {
-		tm.setWallCount(tm.getWallCount()-1);
 		switch(i) {
 			case 0:
 				gsm.setLevelState(null, 1);
