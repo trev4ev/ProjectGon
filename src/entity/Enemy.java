@@ -47,7 +47,7 @@ public class Enemy extends Player{
 		
 		speed = 2;
 		
-		health = 2;
+		health = 1;
 	}
 	
 	public void update() {
@@ -100,6 +100,9 @@ public class Enemy extends Player{
 					movingRight = !movingRight;
 				}
 			}
+		}
+		else {
+			
 		}
 	}
 	
