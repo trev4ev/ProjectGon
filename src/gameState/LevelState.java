@@ -50,7 +50,7 @@ public class LevelState extends GameState {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
 		g.fillRect(0, GamePanel.HEIGHT - count, GamePanel.WIDTH, count);
-		if (count <= GamePanel.HEIGHT*1.25) {
+		if (count <= GamePanel.HEIGHT*1.15) {
 			count++;
 		}
 		else {
