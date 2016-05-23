@@ -91,7 +91,7 @@ public class MenuState extends GameState{
 
 	@Override
 	public void nextState( int i ) {
-		gsm.setState(1);
+		gsm.setLevelState(null, 1);
 	}
 
 	@Override

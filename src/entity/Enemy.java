@@ -38,14 +38,21 @@ public class Enemy extends Player{
 		attackStartTime = System.nanoTime();
 		attackDelay = 400;
 		
-		movingLeft = true;
+		movingLeft = false;
 		movingRight = false;
 		movingUp = false;
 		movingDown = false;
 		
+		if(horizontal) {
+			movingLeft = true;
+		}
+		else {
+			movingUp = true;
+		}
+		
 		attacking = false;
 		
-		speed = 2;
+		speed = 1.5;
 		
 		health = 1;
 	}
@@ -88,7 +95,7 @@ public class Enemy extends Player{
 	
 	public void move() {
 		if(horizontal) {
-			if(x < GamePanel.WIDTH*.25 || x >GamePanel.WIDTH*.75) {
+			if(x < GamePanel.WIDTH*.27 || x >GamePanel.WIDTH*.73) {
 				attack();
 				movingLeft = !movingLeft;
 				movingRight = !movingRight;
@@ -102,7 +109,11 @@ public class Enemy extends Player{
 			}
 		}
 		else {
-			
+			if(y < GamePanel.HEIGHT*.35 || y >GamePanel.HEIGHT*.65) {
+				attack();
+				movingUp = !movingUp;
+				movingDown = !movingDown;
+			}
 		}
 	}
 	

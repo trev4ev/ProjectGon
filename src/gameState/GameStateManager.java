@@ -27,6 +27,16 @@ public class GameStateManager {
 		currentState = state;
 		gameStates.get(currentState).init();
 	}
+	
+	public void reset() {
+		gameStates = new ArrayList<GameState>(25);
+		for(int i = 0; i < 25; i++) {
+			gameStates.add(null);
+		}
+		currentState = MENUSTATE;
+		gameStates.set(0,new MenuState(this));	
+		gameStates.set(1, new Level1State(this));
+	}
 
 	
 	public void setLevelState(GameState gs, int i) {

@@ -1,5 +1,6 @@
 package gameState;
 
+import entity.AdvancedEnemy;
 import entity.Enemy;
 import entity.Player;
 import main.GamePanel;
@@ -17,15 +18,9 @@ public class Level5State extends LevelState{
 		int blocks = tm.getWallCount();
 		if(!initialized) {
 			initialized = true;
-			enemies.add(new Enemy(tm, this, blocks, true));
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
 			enemyCount++;
-			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
-			enemies.add(new Enemy(tm, this, blocks+1, true));
-			enemyCount++;
-			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
-
-			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
-			blocks++;
+			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
 			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 			blocks++;
 			tm.setWallCount(blocks);

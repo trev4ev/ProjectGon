@@ -180,10 +180,10 @@ public class TileMap {
 				
 			}
 		}
-		for(int i = 0; i < wallCount; i++) {
-			g.setColor(Color.blue);
-			g.draw(walls[i]);
-		}
+//		for(int i = 0; i < wallCount; i++) {
+//			g.setColor(Color.blue);
+//			g.draw(walls[i]);
+//		}
 	}
 
 	public void setWallCount(int i) {

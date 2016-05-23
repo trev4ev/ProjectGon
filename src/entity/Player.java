@@ -45,14 +45,14 @@ public class Player extends Entity{
 		movingUp = false;
 		movingDown = false;
 		
-		speed = 6;
+		speed = 4;
 		
 		attacking = false;
 		canAttack = true;
 		
 		direction = Entity.DOWN;
 		
-		maxHealth = 15;
+		maxHealth = 5;
 		health = maxHealth;
 		
 		animation = new Animation();
@@ -127,9 +127,9 @@ public class Player extends Entity{
 	public void draw(Graphics2D g) {
 		g.drawImage(animation.getImage(), (int)x-width/2, (int)y-height/2, null);
 		g.setColor(Color.black);
-		g.drawRect(GamePanel.WIDTH/8 - 31, 9, maxHealth * 4 + 1, 11);
+		g.drawRect(GamePanel.WIDTH/8 - 31, 9, maxHealth * 12 + 1, 11);
 		g.setColor(Color.red);
-		g.fillRect(GamePanel.WIDTH/8 - 30, 10, health * 4, 10);
+		g.fillRect(GamePanel.WIDTH/8 - 30, 10, health * 12, 10);
 		if(attack != null) {
 			g.draw(attack);
 		}
@@ -140,7 +140,7 @@ public class Player extends Entity{
 			hitStartTime = System.nanoTime();
 			health--;
 			if(health <= 0) {
-				// gameEnd
+				gs.endGame();
 			}
 		}
 
@@ -210,6 +210,9 @@ public class Player extends Entity{
 				break;
 			case KeyEvent.VK_SPACE:
 				attack();
+				break;
+			case KeyEvent.VK_P:
+				gs.pause();
 				break;
 		}
 	}

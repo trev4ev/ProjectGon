@@ -17,12 +17,12 @@ public class Level3State extends LevelState{
 		int blocks = tm.getWallCount();
 		if(!initialized) {
 			initialized = true;
-			enemies.add(new Enemy(tm, this, blocks, true));
+			enemies.add(new Enemy(tm, this, blocks, false));
 			enemyCount++;
-			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
-			enemies.add(new Enemy(tm, this, blocks+1, true));
+			enemies.get(0).setPosition(GamePanel.WIDTH * 0.4 , GamePanel.HEIGHT * 0.45);
+			enemies.add(new Enemy(tm, this, blocks+1, false));
 			enemyCount++;
-			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
+			enemies.get(1).setPosition(GamePanel.WIDTH * 0.7 , GamePanel.HEIGHT * 0.55);
 
 			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 			blocks++;
