@@ -17,10 +17,10 @@ public class Level4State extends LevelState{
 		int blocks = tm.getWallCount();
 		if(!initialized) {
 			initialized = true;
-			enemies.add(new Enemy(tm, this, blocks));
+			enemies.add(new Enemy(tm, this, blocks, true));
 			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.75);
-			enemies.add(new Enemy(tm, this, blocks+1));
+			enemies.add(new Enemy(tm, this, blocks+1, true));
 			enemyCount++;
 			enemies.get(1).setPosition(GamePanel.WIDTH * 0.6 , GamePanel.HEIGHT * 0.5);
 
@@ -38,8 +38,8 @@ public class Level4State extends LevelState{
 	
 	public void nextState(int i) {
 		switch(i) {
-		case 0:
-			//gsm.addLevelState(new Level1State(gsm));
+		case 1:
+			gsm.setLevelState(new Level5State(gsm, p), 5);
 			break;
 		case 2:
 			gsm.setLevelState(null, 3);

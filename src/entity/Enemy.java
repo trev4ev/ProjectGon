@@ -10,15 +10,19 @@ import tileMap.TileMap;
 
 public class Enemy extends Player{
 	
-	private int health;
-	private Rectangle[] attack;
-	private int blockNum;
+	protected int health;
+	protected Rectangle[] attack;
+	protected int blockNum;
 	
-	private long attackStartTime;
-	private long attackDelay;
+	protected long attackStartTime;
+	protected long attackDelay;
+	
+	protected boolean horizontal;
 
-	public Enemy(TileMap tm, LevelState gs, int i) {
+	public Enemy(TileMap tm, LevelState gs, int i, boolean direction) {
 		super(tm, gs);
+		
+		horizontal = direction;
 		
 		isAlive = true;
 		
@@ -43,9 +47,8 @@ public class Enemy extends Player{
 		
 		speed = 2;
 		
-		health = 1;
+		health = 2;
 	}
-	//comment
 	
 	public void update() {
 		if(isAlive) {
@@ -84,16 +87,18 @@ public class Enemy extends Player{
 	}
 	
 	public void move() {
-		if(x < GamePanel.WIDTH*.25 || x >GamePanel.WIDTH*.75) {
-			attack();
-			movingLeft = !movingLeft;
-			movingRight = !movingRight;
-		}
-		if(x == GamePanel.WIDTH/2) {
-			if((int)(Math.random()*2) == 0) {
+		if(horizontal) {
+			if(x < GamePanel.WIDTH*.25 || x >GamePanel.WIDTH*.75) {
 				attack();
 				movingLeft = !movingLeft;
 				movingRight = !movingRight;
+			}
+			if(x == GamePanel.WIDTH/2) {
+				if((int)(Math.random()*2) == 0) {
+					attack();
+					movingLeft = !movingLeft;
+					movingRight = !movingRight;
+				}
 			}
 		}
 	}
