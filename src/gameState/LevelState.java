@@ -2,7 +2,15 @@ package gameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import entity.Enemy;
 import entity.Entity;
@@ -50,15 +58,14 @@ public class LevelState extends GameState {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
 		g.fillRect(0, GamePanel.HEIGHT - count, GamePanel.WIDTH, count);
-		if (count <= GamePanel.HEIGHT*1.15) {
+		if (count <= GamePanel.HEIGHT * 1.15) {
 			count++;
-		}
-		else {
+		} else {
 			gsm.reset();
 		}
-		if(count >= GamePanel.HEIGHT/2) {
+		if (count >= GamePanel.HEIGHT / 2) {
 			g.setColor(Color.white);
-			g.drawString("Game Over", GamePanel.WIDTH/2 - 30, GamePanel.HEIGHT/2 - 10);
+			g.drawString("Game Over", GamePanel.WIDTH / 2 - 30, GamePanel.HEIGHT / 2 - 10);
 		}
 	}
 

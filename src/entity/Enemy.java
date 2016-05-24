@@ -3,6 +3,10 @@ package entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import gameState.LevelState;
 import main.GamePanel;
@@ -121,7 +125,7 @@ public class Enemy extends Player{
 		health--;
 	}
 	
-	public void attack() {
+	public void attack(){
 		if(!attacking) {
 			attacking = true;
 			attack[0] = new Rectangle((int) (x - (width*1.5)), (int)y-(height/2), width, height);

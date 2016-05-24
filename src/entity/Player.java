@@ -5,9 +5,13 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
+import Audio.AudioPlayer;
 import gameState.GameState;
 import gameState.LevelState;
 import main.GamePanel;
@@ -24,6 +28,8 @@ public class Player extends Entity{
 	private long attackCooldown;
 	private long hitStartTime;
 	private long hitCooldown;
+	
+	private AudioPlayer aud;
 
 	public Player(TileMap tm, LevelState gs) {
 		super(tm, gs);
@@ -139,7 +145,9 @@ public class Player extends Entity{
 		if((System.nanoTime() - hitStartTime)/1000000 > hitCooldown) {
 			hitStartTime = System.nanoTime();
 			health--;
-			if(health <= 0) {
+			if(health <= 0) {			
+				aud = new AudioPlayer("/SFX/DeathScream.mp3");
+				aud.play();
 				gs.endGame();
 			}
 		}
