@@ -24,14 +24,18 @@ public class MenuState extends GameState{
 		this.gsm = gsm;
 		
 		try {
-			bg = new Background("/Backgrounds/menubg.gif", 1);
-			
+			bg = new Background("/Backgrounds/menubg.gif", 1);		
 			font = new Font("Arial", Font.PLAIN, 12);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	private void playSound() {
+		aud = new AudioPlayer("/SFX/Bell.mp3");
+		aud.play();
+	}
+	
 	@Override
 	public void init() {}
 
@@ -76,15 +80,13 @@ public class MenuState extends GameState{
 				select();
 				break;
 			case KeyEvent.VK_DOWN:
-				aud = new AudioPlayer("/SFX/Bell.mp3");
-				aud.play();
+				playSound();
 				currentChoice++;
 				if(currentChoice == options.length)
 					currentChoice = 0;
 				break;
 			case KeyEvent.VK_UP:
-				aud = new AudioPlayer("/SFX/Bell.mp3");
-				aud.play();
+				playSound();
 				currentChoice--;
 				if(currentChoice < 0)
 					currentChoice = options.length - 1;
