@@ -5,14 +5,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Audio.AudioPlayer;
-import gameState.GameState;
 import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;

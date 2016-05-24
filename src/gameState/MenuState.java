@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+import Audio.AudioPlayer;
 import entity.Entity;
 import tileMap.Background;
 
@@ -17,6 +18,7 @@ public class MenuState extends GameState{
 	
 	private Font font;
 	
+	private AudioPlayer aud;
 	
 	public MenuState(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -74,11 +76,15 @@ public class MenuState extends GameState{
 				select();
 				break;
 			case KeyEvent.VK_DOWN:
+				aud = new AudioPlayer("/SFX/Bell.mp3");
+				aud.play();
 				currentChoice++;
 				if(currentChoice == options.length)
 					currentChoice = 0;
 				break;
 			case KeyEvent.VK_UP:
+				aud = new AudioPlayer("/SFX/Bell.mp3");
+				aud.play();
 				currentChoice--;
 				if(currentChoice < 0)
 					currentChoice = options.length - 1;
