@@ -25,18 +25,23 @@ public class Player extends Entity{
 	private long hitStartTime;
 	private long hitCooldown;
 	
+	private int[] numSprites = {7};
+	
+	private BufferedImage[] sprites;
+	private int currentAnimation = 0;
+	
 	private AudioPlayer aud;
 
 	public Player(TileMap tm, LevelState gs) {
 		super(tm, gs);
 		
-		width = 30;
-		height = 30;
+		width = 32;
+		height = 32;
 		cwidth = 25;
 		cheight = 25;
 		
 		attackStartTime = System.nanoTime();
-		attackDelay = 150;
+		attackDelay = 350;
 		attackCooldown = 650;
 		
 		hitStartTime = System.nanoTime();
@@ -57,16 +62,20 @@ public class Player extends Entity{
 		maxHealth = 5;
 		health = maxHealth;
 		
-		animation = new Animation();
+		animation = new Animation[1];
+
 		try {
-			BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/playersprites.gif"));
-			int numSprites = image.getWidth() / width;
-			BufferedImage[] sprites = new BufferedImage[2];
-			for(int i = 0; i < sprites.length; i++) {
-				sprites[i] = image.getSubimage(i*width, 0, width, height);
+			BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/attackRight.gif"));
+			for(int i = 0; i< animation.length; i++) {
+				animation[i] = new Animation();
+				sprites = new BufferedImage[numSprites[i]];
+				for(int j = 0; j < sprites.length; j++) {
+					sprites[j] = image.getSubimage(j*width, i*height, width, height);
+				}
+				animation[i].setSprites(sprites);
+				animation[i].setDelay(50);
 			}
-			animation.setSprites(sprites);
-			animation.setDelay(400);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -76,12 +85,15 @@ public class Player extends Entity{
 		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
-		animation.update();
+		if(currentAnimation == 1) {
+			animation[0].update();
+		}	
 		if(attacking) {
 			long elapsed = (System.nanoTime() - attackStartTime)/1000000;
 			if(elapsed > attackDelay) {
 				attack = null;
 				attacking = false;
+				currentAnimation = 0;
 			}
 		}
 		if(!canAttack) {
@@ -127,13 +139,18 @@ public class Player extends Entity{
 	}
 	
 	public void draw(Graphics2D g) {
-		g.drawImage(animation.getImage(), (int)x-width/2, (int)y-height/2, null);
+		if(direction == 3) { 
+			g.drawImage(animation[0].getImage(), (int)x-width/2 + width, (int)y-height/2, -width, height, null);
+		}
+		else {
+			g.drawImage(animation[0].getImage(), (int)x-width/2, (int)y-height/2, null);
+		}
 		g.setColor(Color.black);
 		g.drawRect(GamePanel.WIDTH/8 - 31, 9, maxHealth * 12 + 1, 11);
 		g.setColor(Color.red);
 		g.fillRect(GamePanel.WIDTH/8 - 30, 10, health * 12, 10);
 		if(attack != null) {
-			g.draw(attack);
+			//g.draw(attack);
 		}
 	}
 	
@@ -152,6 +169,7 @@ public class Player extends Entity{
 	
 	public void attack() {
 		if(!attacking && canAttack) {
+			currentAnimation = 1;
 			attacking = true;
 			canAttack = false;
 			switch(direction) {

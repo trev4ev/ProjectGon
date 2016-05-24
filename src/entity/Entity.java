@@ -2,7 +2,6 @@ package entity;
 
 import java.awt.Rectangle;
 
-import gameState.GameState;
 import gameState.LevelState;
 import tileMap.TileMap;
 
@@ -51,7 +50,7 @@ public abstract class Entity {
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
 	
-	protected Animation animation;
+	protected Animation[] animation;
 	protected int currentFrame;
 	protected int previousFrame;
 	

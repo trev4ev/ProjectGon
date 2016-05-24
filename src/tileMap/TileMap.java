@@ -1,6 +1,5 @@
 package tileMap;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -16,11 +15,6 @@ public class TileMap {
 	
 	private double x;
 	private double y;
-	
-	private int xmin;
-	private int ymin;
-	private int xmax;
-	private int ymax;
 	
 	private int[][] map;
 	private int tileSize;
