@@ -38,6 +38,10 @@ public class AudioPlayer {
 		clip.start();
 	}
 	
+	public void loop(){
+		if (!clip.isRunning()) clip.start();
+	}
+	
 	public void stop() {
 		if (clip.isRunning()) clip.stop();
 	}

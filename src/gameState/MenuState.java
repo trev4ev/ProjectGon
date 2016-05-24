@@ -5,7 +5,9 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+import Audio.AudioPlayer;
 import entity.Entity;
+import main.GamePanel;
 import tileMap.Background;
 
 public class MenuState extends GameState{
@@ -28,10 +30,12 @@ public class MenuState extends GameState{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		GamePanel.playMusic();
 	}
 
 	@Override
-	public void init() {}
+	public void init() {			
+	}
 
 	@Override
 	public void update() {

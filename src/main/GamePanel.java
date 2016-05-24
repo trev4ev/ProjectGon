@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
+import Audio.AudioPlayer;
 import gameState.GameStateManager;
 
 @SuppressWarnings("serial")
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	private BufferedImage image;
 	private Graphics2D g;
+	private static AudioPlayer mus;
 	
 	private GameStateManager gsm;
 	
@@ -33,6 +35,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
 		setFocusable(true);
 		requestFocus();
+		mus = new AudioPlayer("/SFX/BackgroundMus.mp3");
+		mus.loop();
 	}
 	
 	public void addNotify() {
@@ -49,6 +53,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		g = (Graphics2D) image.getGraphics();
 		running = true;
 		gsm = new GameStateManager();
+	}
+	
+	public static void stopMusic() {
+		mus.stop();
+	}
+	
+	public static void playMusic() {
+		mus.play();
 	}
 	
 	@Override

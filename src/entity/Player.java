@@ -148,6 +148,7 @@ public class Player extends Entity{
 			if(health <= 0) {			
 				aud = new AudioPlayer("/SFX/DeathScream.mp3");
 				aud.play();
+				GamePanel.stopMusic();
 				gs.endGame();
 			}
 		}

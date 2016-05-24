@@ -12,6 +12,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import Audio.AudioPlayer;
 import entity.Enemy;
 import entity.Entity;
 import entity.Player;
