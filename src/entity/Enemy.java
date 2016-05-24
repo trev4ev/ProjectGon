@@ -88,7 +88,7 @@ public class Enemy extends Player{
 				}
 				attacking = false; 
 				tm.getWalls()[blockNum] = getRectangle();
-				gs.removeEnemy();
+				gs.removeEnemy(); 
 			}
 		}
 	}

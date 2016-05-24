@@ -1,3 +1,4 @@
+
 package Audio;
 
 import javax.sound.sampled.AudioFormat;
@@ -36,6 +37,10 @@ public class AudioPlayer {
 		stop();
 		clip.setFramePosition(0);
 		clip.start();
+	}
+	
+	public void loop(){
+		if (!clip.isRunning()) clip.start();
 	}
 	
 	public void stop() {
