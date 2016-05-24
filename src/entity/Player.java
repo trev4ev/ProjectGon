@@ -52,7 +52,7 @@ public class Player extends Entity{
 		movingUp = false;
 		movingDown = false;
 		
-		speed = 4;
+		speed = 2;
 		
 		attacking = false;
 		canAttack = true;

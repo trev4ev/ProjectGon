@@ -106,7 +106,7 @@ public class LevelState extends GameState {
 	public void draw(Graphics2D g) {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-		bg.draw(g);
+		//bg.draw(g);
 		tm.draw(g);
 		p.draw(g);
 		for (Enemy e : enemies) {
