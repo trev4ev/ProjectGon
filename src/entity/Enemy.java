@@ -90,7 +90,7 @@ public class Enemy extends Player{
 				for(Rectangle r: attack) {
 					r = null;
 				}
-				attacking = false;
+				attacking = false; 
 				tm.getWalls()[blockNum] = getRectangle();
 				gs.removeEnemy();
 			}
