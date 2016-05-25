@@ -34,13 +34,10 @@ public class MenuState extends GameState{
 	}
 	
 	@Override
-	public void init() {			
-	}
+	public void init() {}
 
 	@Override
-	public void update() {
-		bg.update();		
-	}
+	public void update() {}
 
 	@Override
 	public void draw(Graphics2D g) {
@@ -65,6 +62,7 @@ public class MenuState extends GameState{
 				nextState(1);
 				break;
 			case 1:
+				nextState(10);
 				break;
 			case 2:
 				System.exit(0);
@@ -96,7 +94,7 @@ public class MenuState extends GameState{
 
 	@Override
 	public void nextState( int i ) {
-		gsm.setLevelState(null, 1);
+		gsm.setLevelState(null, i);
 	}
 
 	@Override
