@@ -2,6 +2,7 @@ package gameState;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
@@ -57,7 +58,7 @@ public class LevelState extends GameState {
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
 		g.fillRect(0, GamePanel.HEIGHT - count, GamePanel.WIDTH, count);
 		if (count <= GamePanel.HEIGHT * 1.15) {
-			count++;
+			count += 2;
 		} else {
 			gsm.reset();
 		}
@@ -104,18 +105,19 @@ public class LevelState extends GameState {
 
 	@Override
 	public void draw(Graphics2D g) {
-		g.setColor(Color.white);
-		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-		//bg.draw(g);
-		tm.draw(g);
-		p.draw(g);
-		for (Enemy e : enemies) {
-			e.draw(g);
-		}
-		if (dead) {
-			deathScreen(g);
-		}
-		if (paused) {
+		if (!paused) {
+			g.setColor(Color.white);
+			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+			// bg.draw(g);
+			tm.draw(g);
+			p.draw(g);
+			for (Enemy e : enemies) {
+				e.draw(g);
+			}
+			if (dead) {
+				deathScreen(g);
+			}
+		} else {
 			// add pause
 			g.fillRect(GamePanel.WIDTH / 2 - 80, GamePanel.HEIGHT / 2 - 10, 160, 20);
 		}
@@ -127,7 +129,12 @@ public class LevelState extends GameState {
 
 	@Override
 	public void keyPressed(int k) {
-		p.keyPressed(k);
+		if (k == KeyEvent.VK_P) {
+			paused = !paused;
+		}
+		if (!paused) {
+			p.keyPressed(k);
+		}
 
 	}
 

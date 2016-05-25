@@ -6,39 +6,39 @@ import gameState.LevelState;
 import tileMap.TileMap;
 
 public abstract class Entity {
-	
+
 	protected TileMap tm;
 	protected int tileSize;
 	protected LevelState gs;
-	
+
 	protected double x; // refers to the middle of the character
 	protected double y;
 	protected double dx;
 	protected double dy;
-	
+
 	protected int direction;
 
 	public static final int UP = 0;
 	public static final int RIGHT = 1;
 	public static final int DOWN = 2;
 	public static final int LEFT = 3;
-	
+
 	protected boolean movingLeft;
 	protected boolean movingRight;
 	protected boolean movingUp;
 	protected boolean movingDown;
-	
+
 	protected boolean attacking;
 	protected boolean canAttack;
 	protected boolean isAlive;
-	
+
 	protected double speed;
-	
+
 	protected int width;
 	protected int height;
 	protected int cwidth;
 	protected int cheight;
-	
+
 	protected int row;
 	protected int col;
 	protected double xdest;
@@ -49,94 +49,90 @@ public abstract class Entity {
 	protected boolean topRight;
 	protected boolean bottomLeft;
 	protected boolean bottomRight;
-	
+
 	protected Animation[] animation;
 	protected int currentFrame;
 	protected int previousFrame;
-	
+
 	public Entity(TileMap tm, LevelState gs) {
 		this.gs = gs;
 		this.tm = tm;
 		tileSize = tm.getTileSize();
 		speed = 1;
 	}
-	
+
 	public boolean intersects(Entity e) {
-		Rectangle r1 = new Rectangle((int)x - cwidth/2, (int)y - cheight/2, cwidth, cheight);
+		Rectangle r1 = new Rectangle((int) x - cwidth / 2, (int) y - cheight / 2, cwidth, cheight);
 		Rectangle r2 = e.getRectangle();
 		return r1.intersects(r2);
 	}
-	
+
 	public Rectangle getRectangle() {
-		return new Rectangle((int)(x + dx) - cwidth/2, (int)(y + dy)- cheight/2, cwidth, cheight);
+		return new Rectangle((int) (x + dx) - cwidth / 2, (int) (y + dy) - cheight / 2, cwidth, cheight);
 	}
-	
-	public void checkTileMapCollision() {		
+
+	public void checkTileMapCollision() {
 		xtemp = x;
 		ytemp = y;
-		
-		for(int i = 0; i < tm.getWallCount(); i++) {
-			if(tm.getWalls()[i].intersects(getRectangle())) {
-				if(movingLeft) {
+
+		for (int i = 0; i < tm.getWallCount(); i++) {
+			if (tm.getWalls()[i].intersects(getRectangle())) {
+				if (movingLeft) {
 					dx = 0;
 					movingLeft = false;
 				}
-				if(movingRight) {
+				if (movingRight) {
 					dx = 0;
 					movingRight = false;
 				}
-				if(movingDown) {
+				if (movingDown) {
 					dy = 0;
 					movingDown = false;
 				}
-				if(movingUp) {
+				if (movingUp) {
 					dy = 0;
 					movingUp = false;
 				}
 				break;
 			}
 		}
-		ytemp+= dy;
-		xtemp+= dx;	
+		ytemp += dy;
+		xtemp += dx;
 	}
-	
-	public void getNextPosition() {	
-		if(movingLeft) {
+
+	public void getNextPosition() {
+		if (movingLeft) {
 			dx = -1 * speed;
-		}
-		else if(movingRight) {
+		} else if (movingRight) {
 			dx = speed;
-		}
-		else {
+		} else {
 			dx = 0;
 		}
-		if(movingDown) {
+		if (movingDown) {
 			dy = speed;
-		}
-		else if(movingUp) {
+		} else if (movingUp) {
 			dy = -1 * speed;
-		}
-		else {
+		} else {
 			dy = 0;
 		}
 	}
-	
+
 	public void setPosition(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public void setVector(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
 	}
 
 	public int getX() {
-		return (int)x;
+		return (int) x;
 	}
 
 	public int getY() {
-		return (int)y;
+		return (int) y;
 	}
 
 	public int getWidth() {
@@ -154,10 +150,9 @@ public abstract class Entity {
 	public int getCheight() {
 		return cheight;
 	}
-	
+
 	public void setDirection(int dir) {
 		direction = dir;
 	}
-	
-	
+
 }
