@@ -54,6 +54,14 @@ public abstract class Entity {
 	protected int currentFrame;
 	protected int previousFrame;
 
+	/**
+	 * Constructs a new Entity and sets the TileMap and GameState
+	 * 
+	 * @param tm
+	 *            TileMap to be set for this entity
+	 * @param gs
+	 *            GameState to be set for this entity
+	 */
 	public Entity(TileMap tm, LevelState gs) {
 		this.gs = gs;
 		this.tm = tm;
@@ -61,16 +69,31 @@ public abstract class Entity {
 		speed = 1;
 	}
 
+	/**
+	 * checks if this entity intersects with another entity using the rectangle
+	 * intersects method
+	 * 
+	 * @param e
+	 *            entity to check with
+	 * @return true if intersects with entity e
+	 */
 	public boolean intersects(Entity e) {
 		Rectangle r1 = new Rectangle((int) x - cwidth / 2, (int) y - cheight / 2, cwidth, cheight);
 		Rectangle r2 = e.getRectangle();
 		return r1.intersects(r2);
 	}
 
+	/**
+	 * @return Rectangle based on the entity's current coordinates
+	 */
 	public Rectangle getRectangle() {
 		return new Rectangle((int) (x + dx) - cwidth / 2, (int) (y + dy) - cheight / 2, cwidth, cheight);
 	}
 
+	/**
+	 * check if the entity collides with any walls and stops the entity from
+	 * moving if it does
+	 */
 	public void checkTileMapCollision() {
 		xtemp = x;
 		ytemp = y;
@@ -100,6 +123,10 @@ public abstract class Entity {
 		xtemp += dx;
 	}
 
+	/**
+	 * sets dx and dy depending on what the current direction movement of the
+	 * entity is
+	 */
 	public void getNextPosition() {
 		if (movingLeft) {
 			dx = -1 * speed;
@@ -117,40 +144,74 @@ public abstract class Entity {
 		}
 	}
 
+	/**
+	 * @param x
+	 *            new x coordinate
+	 * @param y
+	 *            new y coordinate
+	 */
 	public void setPosition(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * @param dx
+	 *            new dx movement
+	 * @param dy
+	 *            new dy movement
+	 */
 	public void setVector(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
 	}
 
+	/**
+	 * @return the current x value
+	 */
 	public int getX() {
 		return (int) x;
 	}
 
+	/**
+	 * @return the current y value
+	 */
 	public int getY() {
 		return (int) y;
 	}
 
+	/**
+	 * @return the width of the entity
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * @return the height of the entity
+	 */
 	public int getHeight() {
 		return height;
 	}
 
+	/**
+	 * @return the collision width of the entity
+	 */
 	public int getCwidth() {
 		return cwidth;
 	}
 
+	/**
+	 * @return the collision height of the entity
+	 */
 	public int getCheight() {
 		return cheight;
 	}
 
+	/**
+	 * @param dir
+	 *            new direction to be set
+	 */
 	public void setDirection(int dir) {
 		direction = dir;
 	}

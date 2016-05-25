@@ -32,6 +32,12 @@ public class Player extends Entity {
 
 	private AudioPlayer aud;
 
+	/**
+	 * @param tm
+	 *            TileMap associated with this player
+	 * @param gs
+	 *            current GameState of the this player
+	 */
 	public Player(TileMap tm, LevelState gs) {
 		super(tm, gs);
 
@@ -81,6 +87,14 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * updates the player by following an order of steps 1. find the next
+	 * position for the player depending on direction it is moving 2. check if
+	 * the player collides with walls or enemies and adjusts next position
+	 * accordingly 3. sets the coordinates to the next position 4. determines
+	 * which animation to set 5. check if player is currently attacking or
+	 * cooling down from attack 6. check if player has gone through a door
+	 */
 	public void update() {
 		getNextPosition();
 		checkTileMapCollision();
@@ -107,6 +121,10 @@ public class Player extends Entity {
 		checkDoorCollision();
 	}
 
+	/**
+	 * checks if player has collided with a door block and sends the player to
+	 * the next state if it has
+	 */
 	public void checkDoorCollision() {
 		for (int i = 0; i < tm.getDoorCount(); i++) {
 			if (tm.getDoors()[i].intersects(getRectangle())) {
@@ -136,6 +154,13 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * draws the correct sprite depending on current action and direction the
+	 * player is facing
+	 * 
+	 * @param g
+	 *            Graphics object
+	 */
 	public void draw(Graphics2D g) {
 		if (direction == 3) {
 			g.drawImage(animation[0].getImage(), (int) x - width / 2 + width, (int) y - height / 2, -width, height,
@@ -152,6 +177,10 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * checks if player has been hit recently, if not subtract 1 health. If
+	 * health is at 0 end the game.
+	 */
 	public void hit() {
 		if ((System.nanoTime() - hitStartTime) / 1000000 > hitCooldown) {
 			hitStartTime = System.nanoTime();
@@ -166,6 +195,10 @@ public class Player extends Entity {
 
 	}
 
+	/**
+	 * attack in the direction which the player is currently facing and check if
+	 * the attack hits any enemies
+	 */
 	public void attack() {
 		if (!attacking && canAttack) {
 			currentAnimation = 1;
@@ -195,6 +228,13 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * depending on the key that is pressed will move the player or cause it to
+	 * attack
+	 * 
+	 * @param k
+	 *            key code
+	 */
 	public void keyPressed(int k) {
 		switch (k) {
 		case KeyEvent.VK_LEFT:
@@ -226,6 +266,12 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * stop the player from moving
+	 * 
+	 * @param k
+	 *            key code
+	 */
 	public void keyReleased(int k) {
 		switch (k) {
 		case KeyEvent.VK_LEFT:
@@ -243,10 +289,22 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * sets the TileMap to the parameter
+	 * 
+	 * @param tm
+	 *            new TileMap
+	 */
 	public void setTileMap(TileMap tm) {
 		this.tm = tm;
 	}
 
+	/**
+	 * sets the GameState to the parameter
+	 * 
+	 * @param gs
+	 *            new GameState
+	 */
 	public void setGameState(LevelState gs) {
 		this.gs = gs;
 	}
