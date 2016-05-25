@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setFocusable(true);
 		requestFocus();
 		mus = new AudioPlayer("/SFX/BackgroundMus.mp3");
-		mus.loop();
+		mus.play();
 	}
 	
 	public void addNotify() {
