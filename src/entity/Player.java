@@ -31,6 +31,8 @@ public class Player extends Entity {
 	private int currentAnimation = 0;
 
 	private AudioPlayer aud;
+	private AudioPlayer hit;
+	private AudioPlayer att;
 
 	/**
 	 * @param tm
@@ -184,6 +186,8 @@ public class Player extends Entity {
 	public void hit() {
 		if ((System.nanoTime() - hitStartTime) / 1000000 > hitCooldown) {
 			hitStartTime = System.nanoTime();
+			hit = new AudioPlayer("/SFX/Pain.mp3");
+			hit.play();
 			health--;
 			if (health <= 0) {
 				aud = new AudioPlayer("/SFX/DeathScream.mp3");
@@ -204,6 +208,7 @@ public class Player extends Entity {
 			currentAnimation = 1;
 			attacking = true;
 			canAttack = false;
+			
 			switch (direction) {
 			case Entity.LEFT:
 				attack = new Rectangle((int) (x - (width / 2 + 20)), (int) (y - (height / 2)), 20, height);
@@ -217,14 +222,15 @@ public class Player extends Entity {
 			case Entity.DOWN:
 				attack = new Rectangle((int) (x - (width / 2)), (int) (y + (height / 2)), width, 20);
 				break;
-			}
+			}	
 			for (Enemy e : gs.getEnemies()) {
 				if (attack.intersects(e.getRectangle())) {
 					e.hit();
 				}
 			}
 			attackStartTime = System.nanoTime();
-
+			att = new AudioPlayer("/SFX/Swing.mp3");
+			att.play();
 		}
 	}
 
