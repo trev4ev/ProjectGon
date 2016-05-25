@@ -9,15 +9,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import Audio.AudioPlayer;
+import audio.AudioPlayer;
 import gameState.GameStateManager;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
-	public static final int WIDTH = 300;
-	public static final int HEIGHT = 240;
-	public static final int SCALE = 2;
+	public static final int WIDTH = 600;
+	public static final int HEIGHT = 480;
+	public static final double SCALE = 1.4;
 	
 	private Thread thread;
 	private boolean running;
@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	public GamePanel() {
 		super();
-		setPreferredSize(new Dimension(WIDTH*SCALE, HEIGHT*SCALE));
+		setPreferredSize(new Dimension((int)(WIDTH*SCALE), (int)(HEIGHT*SCALE)));
 		setFocusable(true);
 		requestFocus();
 		mus = new AudioPlayer("/SFX/BackgroundMus.mp3");
@@ -100,7 +100,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	private void drawToScreen() {
 		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, WIDTH*SCALE, HEIGHT*SCALE, null);
+		g2.drawImage(image, 0, 0, (int)(WIDTH*SCALE), (int)(HEIGHT*SCALE), null);
 		g2.dispose();
 	}
 

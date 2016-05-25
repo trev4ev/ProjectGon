@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-import Audio.AudioPlayer;
+import audio.AudioPlayer;
 import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
@@ -52,7 +52,7 @@ public class Player extends Entity{
 		movingUp = false;
 		movingDown = false;
 		
-		speed = 2;
+		speed = 4;
 		
 		attacking = false;
 		canAttack = true;
@@ -150,7 +150,7 @@ public class Player extends Entity{
 		g.setColor(Color.red);
 		g.fillRect(GamePanel.WIDTH/8 - 30, 10, health * 12, 10);
 		if(attack != null) {
-			//g.draw(attack);
+			g.draw(attack);
 		}
 	}
 	

@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import Audio.AudioPlayer;
+import audio.AudioPlayer;
 import entity.Enemy;
 import entity.Player;
 import main.GamePanel;
@@ -52,7 +52,7 @@ public class LevelState extends GameState {
 		p.update();
 	}
 
-	public void endGame(Graphics2D g) {
+	public void deathScreen(Graphics2D g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
 		g.fillRect(0, GamePanel.HEIGHT - count, GamePanel.WIDTH, count);
@@ -113,9 +113,10 @@ public class LevelState extends GameState {
 			e.draw(g);
 		}
 		if (dead) {
-			endGame(g);
+			deathScreen(g);
 		}
 		if (paused) {
+			// add pause
 			g.fillRect(GamePanel.WIDTH / 2 - 80, GamePanel.HEIGHT / 2 - 10, 160, 20);
 		}
 	}

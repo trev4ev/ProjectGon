@@ -11,8 +11,8 @@ public class ProjectGon {
 		frame.setContentPane(new GamePanel());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
-		frame.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().x - GamePanel.WIDTH,
-				GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().y - GamePanel.HEIGHT
+		frame.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().x - (int)(GamePanel.WIDTH/2 * GamePanel.SCALE),
+				GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint().y - (int)(GamePanel.HEIGHT * GamePanel.SCALE)
 				);
 		frame.pack();
 		frame.setVisible(true);

@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import Audio.AudioPlayer;
+import audio.AudioPlayer;
 import entity.Entity;
 import main.GamePanel;
 import tileMap.Background;
