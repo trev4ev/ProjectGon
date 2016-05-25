@@ -220,6 +220,9 @@ public class Player extends Entity {
 		case KeyEvent.VK_SPACE:
 			attack();
 			break;
+		case KeyEvent.VK_7:
+			health = maxHealth;
+			break;
 		}
 	}
 
