@@ -4,10 +4,10 @@ import entity.Enemy;
 import entity.Player;
 import main.GamePanel;
 
-public class Level6State extends LevelState {
+public class Level7State extends LevelState {
 
-	public Level6State(GameStateManager gsm, Player p) {
-		super(gsm, 6);
+	public Level7State(GameStateManager gsm, Player p) {
+		super(gsm, 7);
 		this.gsm = gsm;
 		this.p = p;
 	}
@@ -32,11 +32,11 @@ public class Level6State extends LevelState {
 
 	public void nextState(int i) {
 		switch (i) {
-		case 2:
-			gsm.setLevelState(new Level7State(gsm, p), 7);
+		case 0:
+			gsm.setLevelState(null, 6);
 			break;
 		case 3:
-			gsm.setLevelState(null, 5);
+			gsm.setLevelState(new Level8State(gsm, p), 8);
 			break;
 		}
 	}

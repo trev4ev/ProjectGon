@@ -129,10 +129,10 @@ public class LevelState extends GameState {
 
 	@Override
 	public void keyPressed(int k) {
-		if(k == KeyEvent.VK_P) {
+		if (k == KeyEvent.VK_P) {
 			paused = !paused;
 		}
-		if(!paused) {
+		if (!paused) {
 			p.keyPressed(k);
 		}
 

@@ -8,21 +8,23 @@ import tileMap.Background;
 
 public class HelpState extends GameState {
 	private Background bg;
-	
+
 	public HelpState(GameStateManager gsm) {
 		this.gsm = gsm;
 		try {
-			bg = new Background("/Backgrounds/helpbg.gif", 1);	
-		} catch(Exception e) {
+			bg = new Background("/Backgrounds/helpbg.gif", 1);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void init() {}
+	public void init() {
+	}
 
 	@Override
-	public void update() {}
+	public void update() {
+	}
 
 	@Override
 	public void draw(Graphics2D g) {
@@ -35,7 +37,8 @@ public class HelpState extends GameState {
 	}
 
 	@Override
-	public void keyReleased(int k) {}
+	public void keyReleased(int k) {
+	}
 
 	@Override
 	public void nextState(int i) {
@@ -43,6 +46,8 @@ public class HelpState extends GameState {
 	}
 
 	@Override
-	public Entity getPlayer() {return null;}
+	public Entity getPlayer() {
+		return null;
+	}
 
 }
