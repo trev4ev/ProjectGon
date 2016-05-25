@@ -19,6 +19,19 @@ public class Enemy extends Player {
 
 	protected boolean horizontal;
 
+	/**
+	 * creates a new Enemy and initializes its width, height, and direction
+	 * depending on parameters given
+	 * 
+	 * @param tm
+	 *            current TileMap
+	 * @param gs
+	 *            current GameState
+	 * @param i
+	 *            the block number associated with this enemy
+	 * @param direction
+	 *            true if moving horizontal
+	 */
 	public Enemy(TileMap tm, LevelState gs, int i, boolean direction) {
 		super(tm, gs);
 
@@ -56,10 +69,21 @@ public class Enemy extends Player {
 		health = 1;
 	}
 
+	/**
+	 * @param x
+	 *            new speed
+	 */
 	public void setSpeed(double x) {
 		speed = x;
 	}
 
+	/**
+	 * updates the enemy by going through certain steps 1. check if the enemy is
+	 * still alive 2. check if the enemy is attacking 3. check if the enemy
+	 * intersects with a player, if so attack 4. move the enemy to the next
+	 * space depending on its direction 5. check if enemy is dead and if so,
+	 * remove from game
+	 */
 	public void update() {
 		if (isAlive) {
 			if (attacking) {
@@ -94,6 +118,11 @@ public class Enemy extends Player {
 		}
 	}
 
+	/**
+	 * depending on whether or not the enemy moves horizontal, change the
+	 * direction of movement whenever the enemy is not within the middle half of
+	 * the TileMap
+	 */
 	public void move() {
 		if (horizontal) {
 			if (x < GamePanel.WIDTH * .27 || x > GamePanel.WIDTH * .73) {
@@ -114,13 +143,27 @@ public class Enemy extends Player {
 				movingUp = !movingUp;
 				movingDown = !movingDown;
 			}
+			if (x == GamePanel.HEIGHT / 2) {
+				if ((int) (Math.random() * 2) == 0) {
+					attack();
+					movingUp = !movingUp;
+					movingDown = !movingDown;
+				}
+			}
 		}
 	}
 
+	/**
+	 * subtract health by one
+	 */
 	public void hit() {
 		health--;
 	}
 
+	/**
+	 * attack in all four directions and check if attacks intersect any players,
+	 * if so damage the player
+	 */
 	public void attack() {
 		if (!attacking) {
 			attacking = true;
@@ -138,6 +181,9 @@ public class Enemy extends Player {
 		}
 	}
 
+	/**
+	 * draw the enemy in its current position and its attacks if attacking
+	 */
 	public void draw(Graphics2D g) {
 		g.setColor(Color.red);
 		g.drawRect((int) x - width / 2, (int) y - height / 2, width, height);
@@ -149,6 +195,9 @@ public class Enemy extends Player {
 		}
 	}
 
+	/**
+	 * @return the block number for this enemy
+	 */
 	public int getBlockNum() {
 		return blockNum;
 	}
