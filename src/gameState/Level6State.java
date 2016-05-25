@@ -20,7 +20,7 @@ public class Level6State extends LevelState {
 			enemies.add(new Enemy(tm, this, blocks, true));
 			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6, GamePanel.HEIGHT * 0.5);
-			enemies.get(0).setSpeed(4);
+			enemies.get(0).setSpeed(8);
 			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 			blocks++;
 			tm.setWallCount(blocks);
