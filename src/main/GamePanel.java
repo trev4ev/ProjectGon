@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	}
 
 	public static void playMusic() {
-		mus.play();
+		mus.loop();
 	}
 
 	@Override
