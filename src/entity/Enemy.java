@@ -52,9 +52,13 @@ public class Enemy extends Player{
 		
 		attacking = false;
 		
-		speed = 1.5;
+		speed = 2;
 		
 		health = 1;
+	}
+	
+	public void setSpeed(double x) {
+		speed = x;
 	}
 	
 	public void update() {

@@ -57,7 +57,7 @@ public class LevelState extends GameState {
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
 		g.fillRect(0, GamePanel.HEIGHT - count, GamePanel.WIDTH, count);
 		if (count <= GamePanel.HEIGHT * 1.15) {
-			count++;
+			count+=2;
 		} else {
 			gsm.reset();
 		}

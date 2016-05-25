@@ -88,6 +88,9 @@ public class Player extends Entity{
 		if(currentAnimation == 1) {
 			animation[0].update();
 		}	
+		else {
+			animation[0].setSprite(0);
+		}
 		if(attacking) {
 			long elapsed = (System.nanoTime() - attackStartTime)/1000000;
 			if(elapsed > attackDelay) {

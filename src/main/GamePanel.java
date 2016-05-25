@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 480;
-	public static final double SCALE = 1.8;
+	public static final double SCALE = 1.4;
 	
 	private Thread thread;
 	private boolean running;
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		setPreferredSize(new Dimension((int)(WIDTH*SCALE), (int)(HEIGHT*SCALE)));
 		setFocusable(true);
 		requestFocus();
-		mus = new AudioPlayer("/SFX/BackgroundMus.mp3");
+		mus = new AudioPlayer("/SFX/BackgroundMusic.mp3");
 		mus.loop();
 	}
 	

@@ -32,11 +32,6 @@ public class MenuState extends GameState{
 		}
 		GamePanel.playMusic();
 	}
-
-	private void playSound() {
-		aud = new AudioPlayer("/SFX/Bell.mp3");
-		aud.play();
-	}
 	
 	@Override
 	public void init() {			
@@ -49,17 +44,18 @@ public class MenuState extends GameState{
 
 	@Override
 	public void draw(Graphics2D g) {
-		bg.draw(g);
-		
+		//bg.draw(g);
+		g.setColor(Color.white);
+		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++)
 		{
 			if(currentChoice == i) {
 				g.setColor(new Color(102,45,145));
-				g.fillOval(125, 130 + i*15, 10, 10);
+				g.fillOval(265, 270 + i*15, 10, 10);
 			}
 			g.setColor(Color.black);
-			g.drawString(options[i], 140, 140 + i*15);
+			g.drawString(options[i], 280, 280 + i*15);
 		}
 	}
 	
@@ -83,13 +79,11 @@ public class MenuState extends GameState{
 				select();
 				break;
 			case KeyEvent.VK_DOWN:
-				playSound();
 				currentChoice++;
 				if(currentChoice == options.length)
 					currentChoice = 0;
 				break;
 			case KeyEvent.VK_UP:
-				playSound();
 				currentChoice--;
 				if(currentChoice < 0)
 					currentChoice = options.length - 1;
