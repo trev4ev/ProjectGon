@@ -1,8 +1,6 @@
 package gameState;
 
-import entity.Enemy;
 import entity.Player;
-import main.GamePanel;
 
 public class Level8State extends LevelState {
 

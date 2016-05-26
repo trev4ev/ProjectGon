@@ -3,8 +3,6 @@ package gameState;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
-import entity.Player;
-
 public class GameStateManager {
 
 	private ArrayList<GameState> gameStates;

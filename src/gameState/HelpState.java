@@ -1,7 +1,6 @@
 package gameState;
 
 import java.awt.Graphics2D;
-import java.awt.event.KeyEvent;
 
 import entity.Entity;
 import tileMap.Background;

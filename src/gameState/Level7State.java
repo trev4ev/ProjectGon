@@ -1,6 +1,6 @@
 package gameState;
 
-import entity.Enemy;
+import entity.AdvancedEnemy;
 import entity.Player;
 import main.GamePanel;
 
@@ -17,7 +17,7 @@ public class Level7State extends LevelState {
 		int blocks = tm.getWallCount();
 		if (!initialized) {
 			initialized = true;
-			enemies.add(new Enemy(tm, this, blocks, true));
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
 			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6, GamePanel.HEIGHT * 0.5);
 			enemies.get(0).setSpeed(4);

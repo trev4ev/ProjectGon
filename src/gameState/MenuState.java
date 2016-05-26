@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-import audio.AudioPlayer;
 import entity.Entity;
 import main.GamePanel;
 import tileMap.Background;
@@ -18,8 +17,6 @@ public class MenuState extends GameState {
 	private String[] options = { "Start", "Help", "Quit" };
 
 	private Font font;
-
-	private AudioPlayer aud;
 
 	public MenuState(GameStateManager gsm) {
 		this.gsm = gsm;
