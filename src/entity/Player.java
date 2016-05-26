@@ -33,6 +33,7 @@ public class Player extends Entity {
 	private AudioPlayer aud;
 	private AudioPlayer hit;
 	private AudioPlayer att;
+	private boolean invincible = false;
 
 	/**
 	 * @param tm
@@ -184,19 +185,20 @@ public class Player extends Entity {
 	 * health is at 0 end the game.
 	 */
 	public void hit() {
-		if ((System.nanoTime() - hitStartTime) / 1000000 > hitCooldown) {
-			hitStartTime = System.nanoTime();
-			hit = new AudioPlayer("/SFX/Pain.mp3");
-			hit.play();
-			health--;
-			if (health <= 0) {
-				aud = new AudioPlayer("/SFX/DeathScream.mp3");
-				aud.play();
-				GamePanel.stopMusic();
-				gs.endGame();
+		if (!invincible) {
+			if ((System.nanoTime() - hitStartTime) / 1000000 > hitCooldown) {
+				hitStartTime = System.nanoTime();
+				hit = new AudioPlayer("/SFX/Pain.mp3");
+				hit.play();
+				health--;
+				if (health <= 0) {
+					aud = new AudioPlayer("/SFX/DeathScream.mp3");
+					aud.play();
+					GamePanel.stopMusic();
+					gs.endGame();
+				}
 			}
 		}
-
 	}
 
 	/**
@@ -208,7 +210,7 @@ public class Player extends Entity {
 			currentAnimation = 1;
 			attacking = true;
 			canAttack = false;
-			
+
 			switch (direction) {
 			case Entity.LEFT:
 				attack = new Rectangle((int) (x - (width / 2 + 20)), (int) (y - (height / 2)), 20, height);
@@ -222,7 +224,7 @@ public class Player extends Entity {
 			case Entity.DOWN:
 				attack = new Rectangle((int) (x - (width / 2)), (int) (y + (height / 2)), width, 20);
 				break;
-			}	
+			}
 			for (Enemy e : gs.getEnemies()) {
 				if (attack.intersects(e.getRectangle())) {
 					e.hit();
@@ -267,7 +269,7 @@ public class Player extends Entity {
 			attack();
 			break;
 		case KeyEvent.VK_7:
-			health = maxHealth;
+			invincible = !invincible;
 			break;
 		}
 	}

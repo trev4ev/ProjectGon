@@ -1,6 +1,7 @@
 package gameState;
 
 import entity.Player;
+import main.GamePanel;
 
 public class Level8State extends LevelState {
 
@@ -8,6 +9,8 @@ public class Level8State extends LevelState {
 		super(gsm, 8);
 		this.gsm = gsm;
 		this.p = p;
+		p.setPosition(p.getX() - tm.getTileSize(), p.getY());
+		GamePanel.stopMusic();
 	}
 
 	public void init() {
