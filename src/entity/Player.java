@@ -175,9 +175,6 @@ public class Player extends Entity {
 		g.drawRect(GamePanel.WIDTH / 8 - 31, 9, maxHealth * 12 + 1, 11);
 		g.setColor(Color.red);
 		g.fillRect(GamePanel.WIDTH / 8 - 30, 10, health * 12, 10);
-		if (attack != null) {
-			g.draw(attack);
-		}
 	}
 
 	/**

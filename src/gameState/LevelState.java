@@ -20,6 +20,7 @@ public class LevelState extends GameState {
 	public boolean initialized = false;
 	public boolean paused = false;
 	public boolean dead = false;
+	public boolean won = false;
 	public int level;
 	public int count = 0;
 
@@ -58,6 +59,18 @@ public class LevelState extends GameState {
 		if (count >= GamePanel.HEIGHT / 2) {
 			g.setColor(Color.white);
 			g.drawString("Game Over", GamePanel.WIDTH / 2 - 30, GamePanel.HEIGHT / 2 - 10);
+		}
+	}
+	
+	public void winScreen(Graphics2D g) {
+		g.setColor(Color.white);
+		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+		g.setColor(Color.black);
+		g.drawString("You Win", GamePanel.WIDTH / 2 - 30, GamePanel.HEIGHT / 2 - 10);
+		if (count <= GamePanel.HEIGHT) {
+			count += 2;
+		} else {
+			gsm.reset();
 		}
 	}
 
@@ -109,7 +122,10 @@ public class LevelState extends GameState {
 			}
 			if (dead) {
 				deathScreen(g);
+			}if(won) {
+				winScreen(g);
 			}
+			
 		} else {
 			// add pause
 			g.fillRect(GamePanel.WIDTH / 2 - 80, GamePanel.HEIGHT / 2 - 10, 160, 20);
