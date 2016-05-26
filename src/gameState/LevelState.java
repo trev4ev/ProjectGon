@@ -24,6 +24,15 @@ public class LevelState extends GameState {
 	public int level;
 	public int count = 0;
 
+	/**
+	 * create and new TileMap and load the map corresponding to the current
+	 * level
+	 * 
+	 * @param gsm
+	 *            gameStateManager
+	 * @param i
+	 *            the current level
+	 */
 	public LevelState(GameStateManager gsm, int i) {
 		this.gsm = gsm;
 		level = i;
@@ -33,20 +42,31 @@ public class LevelState extends GameState {
 		if (!initialized) {
 			tm.loadMap("/Maps/room" + level + ".map");
 			enemyCount = 0;
-		} else {
-			// loadSecondMap();
 		}
 	}
 
+	/**
+	 * pause or upause the game
+	 */
 	public void pause() {
 		paused = !paused;
 	}
 
+	/**
+	 * end the game
+	 */
 	public void endGame() {
 		dead = true;
 		p.update();
 	}
 
+	/**
+	 * this method gets called when the player dies, uses a counter to make
+	 * black screen appear and eventually go back to the menu state
+	 * 
+	 * @param g
+	 *            graphics object
+	 */
 	public void deathScreen(Graphics2D g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, GamePanel.WIDTH, count);
@@ -54,6 +74,7 @@ public class LevelState extends GameState {
 		if (count <= GamePanel.HEIGHT * 1.15) {
 			count += 2;
 		} else {
+			count = 0;
 			gsm.reset();
 		}
 		if (count >= GamePanel.HEIGHT / 2) {
@@ -61,7 +82,14 @@ public class LevelState extends GameState {
 			g.drawString("Game Over", GamePanel.WIDTH / 2 - 30, GamePanel.HEIGHT / 2 - 10);
 		}
 	}
-	
+
+	/**
+	 * this method gets called when the player wins, uses a counter to show the
+	 * win screen and eventually go back to the menu state
+	 * 
+	 * @param g
+	 *            graphics object
+	 */
 	public void winScreen(Graphics2D g) {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
@@ -70,10 +98,14 @@ public class LevelState extends GameState {
 		if (count <= GamePanel.HEIGHT) {
 			count += 2;
 		} else {
+			count = 0;
 			gsm.reset();
 		}
 	}
 
+	/**
+	 * remove enemy and open the door if all enemies have been killed
+	 */
 	public void removeEnemy() {
 		enemyCount--;
 		if (enemyCount <= 0) {
@@ -81,10 +113,18 @@ public class LevelState extends GameState {
 		}
 	}
 
+	/**
+	 * load the map with the door opened
+	 */
 	public void loadSecondMap() {
 		tm.loadMap("/Maps/room" + level + "open.map");
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#init()
+	 */
 	public void init() {
 		p.setGameState(this);
 		p.setTileMap(tm);
@@ -94,6 +134,11 @@ public class LevelState extends GameState {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#update()
+	 */
 	@Override
 	public void update() {
 		if (!dead) {
@@ -106,9 +151,19 @@ public class LevelState extends GameState {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#nextState(int)
+	 */
 	public void nextState(int i) {
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#draw(java.awt.Graphics2D)
+	 */
 	@Override
 	public void draw(Graphics2D g) {
 		if (!paused) {
@@ -122,20 +177,31 @@ public class LevelState extends GameState {
 			}
 			if (dead) {
 				deathScreen(g);
-			}if(won) {
+			}
+			if (won) {
 				winScreen(g);
 			}
-			
+
 		} else {
 			// add pause
 			g.fillRect(GamePanel.WIDTH / 2 - 80, GamePanel.HEIGHT / 2 - 10, 160, 20);
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#getPlayer()
+	 */
 	public Player getPlayer() {
 		return p;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#keyPressed(int)
+	 */
 	@Override
 	public void keyPressed(int k) {
 		if (k == KeyEvent.VK_P) {
@@ -147,11 +213,19 @@ public class LevelState extends GameState {
 
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.GameState#keyReleased(int)
+	 */
 	@Override
 	public void keyReleased(int k) {
 		p.keyReleased(k);
 	}
 
+	/**
+	 * @return ArrayList of all enemies in the current level
+	 */
 	public ArrayList<Enemy> getEnemies() {
 		return enemies;
 	}

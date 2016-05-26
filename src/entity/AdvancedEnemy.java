@@ -9,6 +9,19 @@ public class AdvancedEnemy extends Enemy {
 	private long moveStartTime;
 	private long moveDelay;
 
+	/**
+	 * Constructs an Enemy object which has all the same methods but has a more
+	 * random, and therefore less predictable, movement algorithm
+	 * 
+	 * @param tm
+	 *            TileMap to be assigned to this enemy
+	 * @param gs
+	 *            Current GameState
+	 * @param i
+	 *            BlockNumber given to this enemy
+	 * @param direction
+	 *            moving horizontal or vertical
+	 */
 	public AdvancedEnemy(TileMap tm, LevelState gs, int i, boolean direction) {
 		super(tm, gs, i, direction);
 		moveDelay = 1000;
@@ -47,19 +60,19 @@ public class AdvancedEnemy extends Enemy {
 			}
 			moveStartTime = System.nanoTime();
 		}
-		if(x < GamePanel.WIDTH*0.2) {
+		if (x < GamePanel.WIDTH * 0.2) {
 			movingLeft = false;
 			movingRight = true;
 		}
-		if(x > GamePanel.WIDTH*0.8) {
+		if (x > GamePanel.WIDTH * 0.8) {
 			movingLeft = true;
 			movingRight = false;
 		}
-		if(y < GamePanel.HEIGHT*0.2) {
+		if (y < GamePanel.HEIGHT * 0.2) {
 			movingUp = false;
 			movingDown = true;
 		}
-		if(y > GamePanel.HEIGHT*0.8) {
+		if (y > GamePanel.HEIGHT * 0.8) {
 			movingDown = false;
 			movingUp = true;
 		}
