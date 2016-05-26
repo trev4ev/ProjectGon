@@ -73,7 +73,7 @@ public class Player extends Entity {
 		animation = new Animation[1];
 
 		try {
-			BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/attackRight.gif"));
+			BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Player/attackright.gif"));
 			for (int i = 0; i < animation.length; i++) {
 				animation[i] = new Animation();
 				sprites = new BufferedImage[numSprites[i]];
