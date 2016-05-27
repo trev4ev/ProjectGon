@@ -4,12 +4,27 @@ import java.awt.image.BufferedImage;
 
 public class Animation {
 
+	/**
+	 * array of sprites to cycle through
+	 */
 	private BufferedImage[] sprites;
+	/**
+	 * the index of the current sprite
+	 */
 	private int currentSprite;
 
+	/**
+	 * time since last animation change
+	 */
 	private long startTime;
+	/**
+	 * time to wait before moving on to next sprite
+	 */
 	private long delay;
 
+	/**
+	 * indicates if the animation has gone through one cycle
+	 */
 	private boolean playedOnce;
 
 	/**

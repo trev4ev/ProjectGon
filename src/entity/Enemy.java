@@ -10,13 +10,31 @@ import tileMap.TileMap;
 
 public class Enemy extends Player {
 
+	/**
+	 * amount of health for this enemy
+	 */
 	protected int health;
+	/**
+	 * an array of rectangles which represent the enemy's attacks
+	 */
 	protected Rectangle[] attack;
+	/**
+	 * unique number to represent this enemy
+	 */
 	protected int blockNum;
 
+	/**
+	 * time since last attack
+	 */
 	protected long attackStartTime;
+	/**
+	 * amount of time to wait before attacking again
+	 */
 	protected long attackDelay;
 
+	/**
+	 * indicates if the enemy moves vertical or horizontal
+	 */
 	protected boolean horizontal;
 
 	/**

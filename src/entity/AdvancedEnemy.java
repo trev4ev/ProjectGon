@@ -6,7 +6,14 @@ import tileMap.TileMap;
 
 public class AdvancedEnemy extends Enemy {
 
+	/**
+	 * time since last changed direction
+	 */
 	private long moveStartTime;
+
+	/**
+	 * amount of time to wait before changing direction
+	 */
 	private long moveDelay;
 
 	/**
