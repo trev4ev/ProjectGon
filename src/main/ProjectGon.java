@@ -6,6 +6,13 @@ import javax.swing.JFrame;
 
 public class ProjectGon {
 
+	/**
+	 * creates a JFrame and adds the GamePanel inside, sets the location and
+	 * makes the frame visible
+	 * 
+	 * @param args
+	 *            command line arguments
+	 */
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Project Gon");
 		frame.setContentPane(new GamePanel());

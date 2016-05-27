@@ -17,7 +17,7 @@ public class HelpState extends GameState {
 	public HelpState(GameStateManager gsm) {
 		this.gsm = gsm;
 		try {
-			bg = new Background("/Backgrounds/helpbg.gif", 1);
+			bg = new Background("/Backgrounds/helpbg.gif");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

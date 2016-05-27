@@ -30,6 +30,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 	private GameStateManager gsm;
 
+	/**
+	 * create a new JPanel with size properly scaled, load background music and
+	 * start the music
+	 */
 	public GamePanel() {
 		super();
 		setPreferredSize(new Dimension((int) (WIDTH * SCALE), (int) (HEIGHT * SCALE)));
@@ -39,6 +43,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		mus.loop();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javax.swing.JComponent#addNotify()
+	 */
 	public void addNotify() {
 		super.addNotify();
 		if (thread == null) {
@@ -48,6 +57,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 	}
 
+	/**
+	 * create a blank image, initialize gameStateManager and get the graphics
+	 * object for the image
+	 */
 	private void init() {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
@@ -55,14 +68,24 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		gsm = new GameStateManager();
 	}
 
+	/**
+	 * stop the background music
+	 */
 	public static void stopMusic() {
 		mus.stop();
 	}
 
+	/**
+	 * play the bakcground music
+	 */
 	public static void playMusic() {
 		mus.loop();
 	}
 
+	/**
+	 * main game loop, calls update and draw every 17 milliseconds to achieve a
+	 * frame rate of 60fps
+	 */
 	@Override
 	public void run() {
 		init();
@@ -90,14 +113,23 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 	}
 
+	/**
+	 * call the update method for the gameStateManager
+	 */
 	private void update() {
 		gsm.update();
 	}
 
+	/**
+	 * call the draw method for the gameStateManager
+	 */
 	private void draw() {
 		gsm.draw(g);
 	}
 
+	/**
+	 * draw the current image to the screen
+	 */
 	private void drawToScreen() {
 		Graphics g2 = getGraphics();
 		g2.drawImage(image, 0, 0, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE), null);
@@ -108,11 +140,21 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	public void keyTyped(KeyEvent e) {
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		gsm.keyPressed(e.getKeyCode());
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		gsm.keyReleased(e.getKeyCode());

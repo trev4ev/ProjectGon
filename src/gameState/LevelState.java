@@ -129,7 +129,7 @@ public class LevelState extends GameState {
 		p.setGameState(this);
 		p.setTileMap(tm);
 		if (!initialized) {
-			bg = new Background("/Backgrounds/grassbg1.gif", 0.1);
+			bg = new Background("/Backgrounds/grassbg1.gif");
 			enemies = new ArrayList<Enemy>();
 		}
 	}

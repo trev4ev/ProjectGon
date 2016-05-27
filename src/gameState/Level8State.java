@@ -6,6 +6,14 @@ import main.GamePanel;
 
 public class Level8State extends LevelState {
 
+	/**
+	 * calls the super constructor, stops the current background music
+	 * 
+	 * @param gsm
+	 *            GameStateManager
+	 * @param p
+	 *            Player
+	 */
 	public Level8State(GameStateManager gsm, Player p) {
 		super(gsm, 8);
 		this.gsm = gsm;
@@ -14,6 +22,11 @@ public class Level8State extends LevelState {
 		GamePanel.stopMusic();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.LevelState#init()
+	 */
 	public void init() {
 		super.init();
 		int blocks = tm.getWallCount();
@@ -32,6 +45,11 @@ public class Level8State extends LevelState {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.LevelState#nextState(int)
+	 */
 	public void nextState(int i) {
 		switch (i) {
 		case 3:

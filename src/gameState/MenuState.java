@@ -18,11 +18,17 @@ public class MenuState extends GameState {
 
 	private Font font;
 
+	/**
+	 * load the background image and start playing music
+	 * 
+	 * @param gsm
+	 *            GameStateManager
+	 */
 	public MenuState(GameStateManager gsm) {
 		this.gsm = gsm;
 
 		try {
-			bg = new Background("/Backgrounds/menubg.gif", 1);
+			bg = new Background("/Backgrounds/menubg.gif");
 			font = new Font("Arial", Font.PLAIN, 12);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,6 +44,9 @@ public class MenuState extends GameState {
 	public void update() {
 	}
 
+	/**
+	 * draws the background and also the three menu choices
+	 */
 	@Override
 	public void draw(Graphics2D g) {
 		// bg.draw(g);
@@ -54,6 +63,9 @@ public class MenuState extends GameState {
 		}
 	}
 
+	/**
+	 * starts game, shows help screen, or quits depending on current choice
+	 */
 	private void select() {
 		switch (currentChoice) {
 		case 0:
@@ -68,6 +80,9 @@ public class MenuState extends GameState {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see gameState.GameState#keyPressed(int)
+	 */
 	@Override
 	public void keyPressed(int k) {
 		switch (k) {
@@ -88,14 +103,19 @@ public class MenuState extends GameState {
 	}
 
 	@Override
-	public void keyReleased(int k) {
-	}
+	public void keyReleased(int k) {}
 
+	/* (non-Javadoc)
+	 * @see gameState.GameState#nextState(int)
+	 */
 	@Override
 	public void nextState(int i) {
 		gsm.setLevelState(null, i);
 	}
 
+	/* (non-Javadoc)
+	 * @see gameState.GameState#getPlayer()
+	 */
 	@Override
 	public Entity getPlayer() {
 		return null;

@@ -6,12 +6,25 @@ import main.GamePanel;
 
 public class Level4State extends LevelState {
 
+	/**
+	 * calls the super constructor
+	 * 
+	 * @param gsm
+	 *            GameStateManager
+	 * @param p
+	 *            Player
+	 */
 	public Level4State(GameStateManager gsm, Player p) {
 		super(gsm, 4);
 		this.gsm = gsm;
 		this.p = p;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.LevelState#init()
+	 */
 	public void init() {
 		super.init();
 		int blocks = tm.getWallCount();
@@ -35,6 +48,11 @@ public class Level4State extends LevelState {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see gameState.LevelState#nextState(int)
+	 */
 	public void nextState(int i) {
 		switch (i) {
 		case 1:
