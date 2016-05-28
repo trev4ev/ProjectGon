@@ -4,6 +4,10 @@ import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class AdvancedEnemy extends Enemy {
 
 	/**

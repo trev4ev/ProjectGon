@@ -1,4 +1,3 @@
-
 package audio;
 
 import javax.sound.sampled.AudioFormat;
@@ -6,6 +5,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ * @author Jerry Qing
+ *
+ */
 public class AudioPlayer {
 
 	private Clip clip;

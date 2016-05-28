@@ -5,6 +5,10 @@ import java.awt.Rectangle;
 import gameState.LevelState;
 import tileMap.TileMap;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public abstract class Entity {
 
 	/**

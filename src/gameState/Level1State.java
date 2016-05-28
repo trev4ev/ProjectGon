@@ -3,6 +3,10 @@ package gameState;
 import entity.Player;
 import main.GamePanel;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Level1State extends LevelState {
 
 	/**

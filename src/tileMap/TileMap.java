@@ -11,6 +11,10 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class TileMap {
 
 	/**

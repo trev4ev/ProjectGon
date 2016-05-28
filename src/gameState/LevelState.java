@@ -11,6 +11,10 @@ import main.GamePanel;
 import tileMap.Background;
 import tileMap.TileMap;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class LevelState extends GameState {
 
 	/**

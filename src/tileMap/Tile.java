@@ -2,6 +2,10 @@ package tileMap;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Tile {
 
 	/**

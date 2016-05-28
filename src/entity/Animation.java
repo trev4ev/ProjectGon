@@ -2,6 +2,10 @@ package entity;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Animation {
 
 	/**

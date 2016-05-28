@@ -5,6 +5,10 @@ import java.awt.Graphics2D;
 import entity.Entity;
 import tileMap.Background;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class HelpState extends GameState {
 	
 	/**

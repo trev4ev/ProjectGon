@@ -4,6 +4,10 @@ import entity.AdvancedEnemy;
 import entity.Player;
 import main.GamePanel;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Level8State extends LevelState {
 
 	/**

@@ -8,6 +8,10 @@ import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Enemy extends Player {
 
 	/**

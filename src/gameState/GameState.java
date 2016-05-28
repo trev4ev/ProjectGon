@@ -4,6 +4,10 @@ import java.awt.Graphics2D;
 
 import entity.Entity;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public abstract class GameState {
 
 	/**

@@ -4,6 +4,10 @@ import java.awt.GraphicsEnvironment;
 
 import javax.swing.JFrame;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class ProjectGon {
 
 	/**

@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 import audio.AudioPlayer;
 import gameState.GameStateManager;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 

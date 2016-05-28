@@ -4,6 +4,10 @@ import entity.Enemy;
 import entity.Player;
 import main.GamePanel;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class Level2State extends LevelState {
 
 	/**

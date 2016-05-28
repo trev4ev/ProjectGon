@@ -9,6 +9,10 @@ import entity.Entity;
 import main.GamePanel;
 import tileMap.Background;
 
+/**
+ * @author Trevor Aquino
+ *
+ */
 public class MenuState extends GameState {
 
 	/**
