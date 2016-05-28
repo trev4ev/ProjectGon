@@ -15,24 +15,46 @@ import tileMap.TileMap;
 
 public class Player extends Entity {
 
-	private int health;
-	private int maxHealth;
+	/**
+	 * rectangle object representing the player's attack
+	 */
 	private Rectangle attack;
 
+	/**
+	 * represents the last time the player attacked, the length of the attack,
+	 * and the amount of time before the player can attack again
+	 */
 	private long attackStartTime;
 	private long attackDelay;
 	private long attackCooldown;
+
+	/**
+	 * represents the last time the player was hit and the amount of time before
+	 * the player can be hit again
+	 */
 	private long hitStartTime;
 	private long hitCooldown;
 
+	/**
+	 * an array of integers representing the number of sprites in each animation
+	 */
 	private int[] numSprites = { 7 };
 
+	/**
+	 * temporary array of sprites to create each animation
+	 */
 	private BufferedImage[] sprites;
-	private int currentAnimation = 0;
 
-	private AudioPlayer aud;
+	/**
+	 * AudioPlayer objects to play different sounds
+	 */
+	private AudioPlayer death;
 	private AudioPlayer hit;
 	private AudioPlayer att;
+
+	/**
+	 * boolean to debug and go through the game without losing health
+	 */
 	private boolean invincible = false;
 
 	/**
@@ -102,7 +124,7 @@ public class Player extends Entity {
 		getNextPosition();
 		checkTileMapCollision();
 		setPosition(xtemp, ytemp);
-		if (currentAnimation == 1) {
+		if (currentFrame == 1) {
 			animation[0].update();
 		} else {
 			animation[0].setSprite(0);
@@ -112,7 +134,7 @@ public class Player extends Entity {
 			if (elapsed > attackDelay) {
 				attack = null;
 				attacking = false;
-				currentAnimation = 0;
+				currentFrame = 0;
 			}
 		}
 		if (!canAttack) {
@@ -189,8 +211,8 @@ public class Player extends Entity {
 				hit.play();
 				health--;
 				if (health <= 0) {
-					aud = new AudioPlayer("/SFX/DeathScream.mp3");
-					aud.play();
+					death = new AudioPlayer("/SFX/DeathScream.mp3");
+					death.play();
 					GamePanel.stopMusic();
 					gs.endGame();
 				}
@@ -204,7 +226,7 @@ public class Player extends Entity {
 	 */
 	public void attack() {
 		if (!attacking && canAttack) {
-			currentAnimation = 1;
+			currentFrame = 1;
 			attacking = true;
 			canAttack = false;
 

@@ -7,52 +7,112 @@ import tileMap.TileMap;
 
 public abstract class Entity {
 
+	/**
+	 * TileMap which this entity is a part of
+	 */
 	protected TileMap tm;
+
+	/**
+	 * size of each tile
+	 */
 	protected int tileSize;
+
+	/**
+	 * Current levelState of this entity
+	 */
 	protected LevelState gs;
 
-	protected double x; // refers to the middle of the character
+	/**
+	 * x coordinate of the middle of the entity
+	 */
+	protected double x;
+
+	/**
+	 * y coordinate of the middle of the entity
+	 */
 	protected double y;
+
+	/**
+	 * movement in x direction
+	 */
 	protected double dx;
+
+	/**
+	 * movement in y direction
+	 */
 	protected double dy;
 
+	/**
+	 * integer representing which direction entity is facing
+	 */
 	protected int direction;
 
+	/**
+	 * static integers for direction
+	 */
 	public static final int UP = 0;
 	public static final int RIGHT = 1;
 	public static final int DOWN = 2;
 	public static final int LEFT = 3;
 
+	/**
+	 * booleans to indicate if the entity is moving in these directions
+	 */
 	protected boolean movingLeft;
 	protected boolean movingRight;
 	protected boolean movingUp;
 	protected boolean movingDown;
 
+	/**
+	 * boolean to indicate if the entity is currently attacking and/or has
+	 * attacked recently
+	 */
 	protected boolean attacking;
 	protected boolean canAttack;
+
+	/**
+	 * boolean to indicate if entity is alive
+	 */
 	protected boolean isAlive;
 
+	/**
+	 * the speed at which the entity moves
+	 */
 	protected double speed;
+	
+	/**
+	 * current health and max health of the entity
+	 */
+	protected int health;
+	protected int maxHealth;
 
+	/**
+	 * width and height of the entity image
+	 */
 	protected int width;
 	protected int height;
+
+	/**
+	 * width and height of the entity hit box
+	 */
 	protected int cwidth;
 	protected int cheight;
 
-	protected int row;
-	protected int col;
-	protected double xdest;
-	protected double ydest;
+	/**
+	 * where the entity will be based on dx and dy
+	 */
 	protected double xtemp;
 	protected double ytemp;
-	protected boolean topLeft;
-	protected boolean topRight;
-	protected boolean bottomLeft;
-	protected boolean bottomRight;
 
+	/**
+	 * array of animation objects for entity
+	 */
 	protected Animation[] animation;
+
+	/**
+	 * index of the current animation
+	 */
 	protected int currentFrame;
-	protected int previousFrame;
 
 	/**
 	 * Constructs a new Entity and sets the TileMap and GameState

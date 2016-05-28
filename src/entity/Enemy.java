@@ -11,10 +11,6 @@ import tileMap.TileMap;
 public class Enemy extends Player {
 
 	/**
-	 * amount of health for this enemy
-	 */
-	protected int health;
-	/**
 	 * an array of rectangles which represent the enemy's attacks
 	 */
 	protected Rectangle[] attack;
