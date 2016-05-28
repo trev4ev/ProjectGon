@@ -11,11 +11,24 @@ import tileMap.Background;
 
 public class MenuState extends GameState {
 
+	/**
+	 * background object for this menuState
+	 */
 	private Background bg;
 
+	/**
+	 * index of the current choices
+	 */
 	private int currentChoice = 0;
+
+	/**
+	 * array of possible menu choices
+	 */
 	private String[] options = { "Start", "Help", "Quit" };
 
+	/**
+	 * font for menu options
+	 */
 	private Font font;
 
 	/**
@@ -80,7 +93,9 @@ public class MenuState extends GameState {
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see gameState.GameState#keyPressed(int)
 	 */
 	@Override
@@ -103,9 +118,12 @@ public class MenuState extends GameState {
 	}
 
 	@Override
-	public void keyReleased(int k) {}
+	public void keyReleased(int k) {
+	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see gameState.GameState#nextState(int)
 	 */
 	@Override
@@ -113,7 +131,9 @@ public class MenuState extends GameState {
 		gsm.setLevelState(null, i);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see gameState.GameState#getPlayer()
 	 */
 	@Override

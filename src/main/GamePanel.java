@@ -15,19 +15,51 @@ import gameState.GameStateManager;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
+	/**
+	 * dimensions of the game frame and how it is scaled
+	 */
 	public static final int WIDTH = 600;
 	public static final int HEIGHT = 480;
 	public static final double SCALE = 1.4;
 
+	/**
+	 * Thread to run the game
+	 */
 	private Thread thread;
+
+	/**
+	 * boolean indicates that the game is running
+	 */
 	private boolean running;
+
+	/**
+	 * ideal frameRate
+	 */
 	private int FPS = 60;
+
+	/**
+	 * ideal amount of time, in milliseconds, between each update
+	 */
 	private long targetTime = 1000 / FPS;
 
+	/**
+	 * image to be drawn to the screen
+	 */
 	private BufferedImage image;
+
+	/**
+	 * Graphics object
+	 */
 	private Graphics2D g;
+
+	/**
+	 * AudioPlayer to start background music
+	 */
 	private static AudioPlayer mus;
 
+	/**
+	 * GameStateManager object to hold all game states
+	 */
 	private GameStateManager gsm;
 
 	/**

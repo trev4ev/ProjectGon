@@ -6,6 +6,10 @@ import entity.Entity;
 import tileMap.Background;
 
 public class HelpState extends GameState {
+	
+	/**
+	 * background object for this helpState
+	 */
 	private Background bg;
 
 	/**

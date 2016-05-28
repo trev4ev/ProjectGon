@@ -12,16 +12,56 @@ import tileMap.Background;
 import tileMap.TileMap;
 
 public class LevelState extends GameState {
+
+	/**
+	 * TileMap for this levelState
+	 */
 	public TileMap tm;
+
+	/**
+	 * background for this levelState
+	 */
 	public Background bg;
+
+	/**
+	 * the player object in this levelState
+	 */
 	public Player p;
+
+	/**
+	 * an arrayList of all enemies added to this levelState
+	 */
 	public ArrayList<Enemy> enemies;
+
+	/**
+	 * a count of all enemies alive
+	 */
 	public int enemyCount;
+
+	/**
+	 * boolean indicating if this levelState has been initialized
+	 */
 	public boolean initialized = false;
+
+	/**
+	 * boolean indicating if the game is paused
+	 */
 	public boolean paused = false;
+
+	/**
+	 * booleans indicating if the player has died or won the game
+	 */
 	public boolean dead = false;
 	public boolean won = false;
+
+	/**
+	 * integer describiing which level
+	 */
 	public int level;
+
+	/**
+	 * basic counter for end game
+	 */
 	public int count = 0;
 
 	/**

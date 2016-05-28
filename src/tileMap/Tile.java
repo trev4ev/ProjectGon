@@ -4,9 +4,19 @@ import java.awt.image.BufferedImage;
 
 public class Tile {
 
+	/**
+	 * image of tile
+	 */
 	private BufferedImage image;
+
+	/**
+	 * type of tile: normal, blocked, or door
+	 */
 	private int type;
 
+	/**
+	 * static integers representing the different types of tiles
+	 */
 	public static final int NORMAL = 0;
 	public static final int BLOCKED = 1;
 	public static final int DOOR = 2;

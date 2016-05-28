@@ -10,14 +10,30 @@ import main.GamePanel;
 
 public class Background {
 
+	/**
+	 * image which makes up the background
+	 */
 	private BufferedImage image;
 
+	/**
+	 * current x coordinate
+	 */
 	private double x;
-	private double y;
-	private double dx;
-	private double dy;
 
-	private double moveScale;
+	/**
+	 * current y coordinate
+	 */
+	private double y;
+
+	/**
+	 * movement in the x coordinate
+	 */
+	private double dx;
+
+	/**
+	 * movement in the y coordinate
+	 */
+	private double dy;
 
 	/**
 	 * read in the file at the given path
@@ -42,8 +58,8 @@ public class Background {
 	 *            y coordinate
 	 */
 	public void setPosition(double x, double y) {
-		this.x = (x * moveScale) % GamePanel.WIDTH;
-		this.y = (y * moveScale) % GamePanel.HEIGHT;
+		this.x = (x) % GamePanel.WIDTH;
+		this.y = (y) % GamePanel.HEIGHT;
 	}
 
 	/**

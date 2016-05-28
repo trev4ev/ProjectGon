@@ -5,9 +5,19 @@ import java.util.ArrayList;
 
 public class GameStateManager {
 
+	/**
+	 * ArrayList holding all the gameStates
+	 */
 	private ArrayList<GameState> gameStates;
+
+	/**
+	 * index of the current state
+	 */
 	private int currentState;
 
+	/**
+	 * static integers for the index of the menu and first level states
+	 */
 	public static final int MENUSTATE = 0;
 	public static final int LEVEL1STATE = 1;
 

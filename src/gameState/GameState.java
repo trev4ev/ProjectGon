@@ -6,6 +6,9 @@ import entity.Entity;
 
 public abstract class GameState {
 
+	/**
+	 * the GameStateManager managing this gameState
+	 */
 	protected GameStateManager gsm;
 
 	/**

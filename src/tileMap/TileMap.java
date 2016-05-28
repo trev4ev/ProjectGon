@@ -13,28 +13,79 @@ import main.GamePanel;
 
 public class TileMap {
 
+	/**
+	 * x coordinate of the tileMap
+	 */
 	private double x;
+
+	/**
+	 * y coordinate of the tileMap
+	 */
 	private double y;
 
+	/**
+	 * 2-D array of integers to represent the map
+	 */
 	private int[][] map;
+
+	/**
+	 * size of a single tile
+	 */
 	private int tileSize;
+
+	/**
+	 * number of rows and columns in the map
+	 */
 	private int numRows;
 	private int numCols;
+
+	/**
+	 * widht and height of the tileMap
+	 */
 	private int width;
 	private int height;
 
+	/**
+	 * tileSet image containing images of all tiles
+	 */
 	private BufferedImage tileSet;
+
+	/**
+	 * total number of tiles
+	 */
 	private int numTiles;
+
+	/**
+	 * 2-D array of tiles to represent map
+	 */
 	private Tile[][] tiles;
 
+	/**
+	 * number of rows and columns drawn on the screen
+	 */
 	private int rowsDrawn;
 	private int colsDrawn;
 
+	/**
+	 * an array of rectangles representing all the wall tiles
+	 */
 	private Rectangle[] walls;
+
+	/**
+	 * an array of rectangles representing all the door tiles
+	 */
 	private Rectangle[] doors;
 
+	/**
+	 * integers representing the number of walls at the loading of the map and
+	 * current
+	 */
 	private int wallCount = 0;
 	private int originalWallCount = 0;
+
+	/**
+	 * current number of doors
+	 */
 	private int doorCount = 0;
 
 	/**
