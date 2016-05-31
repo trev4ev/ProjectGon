@@ -12,6 +12,10 @@ import tileMap.Background;
 import tileMap.TileMap;
 
 /**
+ * Base class for all LevelXStates and extends GameState. Has all common
+ * functions and variables including loading in the tileMap and player and
+ * updating and drawing everything in the level.
+ * 
  * @author Trevor Aquino
  *
  */
@@ -59,7 +63,7 @@ public class LevelState extends GameState {
 	public boolean won = false;
 
 	/**
-	 * integer describiing which level
+	 * integer describing which level
 	 */
 	public int level;
 

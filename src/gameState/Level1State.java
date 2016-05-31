@@ -4,6 +4,9 @@ import entity.Player;
 import main.GamePanel;
 
 /**
+ * Extends levelState and adds all enemies. Sends the player to the next level
+ * depending on what door they go through.
+ * 
  * @author Trevor Aquino
  *
  */

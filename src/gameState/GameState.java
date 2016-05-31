@@ -5,6 +5,9 @@ import java.awt.Graphics2D;
 import entity.Entity;
 
 /**
+ * Abstract class for all GameStates in the game. Includes the necessary methods
+ * including initialization, update, and drawing to the screen.
+ * 
  * @author Trevor Aquino
  *
  */

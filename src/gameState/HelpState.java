@@ -6,11 +6,13 @@ import entity.Entity;
 import tileMap.Background;
 
 /**
+ * Extends GameState and shows the instructions on how to play.
+ * 
  * @author Trevor Aquino
  *
  */
 public class HelpState extends GameState {
-	
+
 	/**
 	 * background object for this helpState
 	 */
@@ -26,6 +28,7 @@ public class HelpState extends GameState {
 		this.gsm = gsm;
 		try {
 			bg = new Background("/Backgrounds/helpbg.gif");
+			bg.setPosition(0, 32);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

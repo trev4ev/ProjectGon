@@ -10,6 +10,10 @@ import main.GamePanel;
 import tileMap.Background;
 
 /**
+ * This class represents the menu of the game and extends GameState. The menu
+ * state has 3 options which allow the users to start the game, read the help
+ * manual, or exit the game.
+ * 
  * @author Trevor Aquino
  *
  */
@@ -73,10 +77,10 @@ public class MenuState extends GameState {
 		for (int i = 0; i < options.length; i++) {
 			if (currentChoice == i) {
 				g.setColor(Color.red);
-				g.fillOval(GamePanel.WIDTH/2 - 34, 270 + i * 15, 10, 10);
+				g.fillOval(GamePanel.WIDTH / 2 - 34, 270 + i * 15, 10, 10);
 			}
 			g.setColor(Color.black);
-			g.drawString(options[i], GamePanel.WIDTH/2 - 20, 280 + i * 15);
+			g.drawString(options[i], GamePanel.WIDTH / 2 - 20, 280 + i * 15);
 		}
 	}
 
