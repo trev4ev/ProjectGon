@@ -5,6 +5,9 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 
 /**
+ * Main class of the entire project. Creates a jFrame and adds an instance of
+ * gamePanel inside.
+ * 
  * @author Trevor Aquino
  *
  */

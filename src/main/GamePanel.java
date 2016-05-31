@@ -13,6 +13,9 @@ import audio.AudioPlayer;
 import gameState.GameStateManager;
 
 /**
+ * This class represents the panel which holds everything in the game. Uses a
+ * thread to update and render the game at 60 fps.
+ * 
  * @author Trevor Aquino
  *
  */
