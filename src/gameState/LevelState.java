@@ -80,8 +80,8 @@ public class LevelState extends GameState {
 	public LevelState(GameStateManager gsm, int i) {
 		this.gsm = gsm;
 		level = i;
-		tm = new TileMap(30);
-		tm.loadTiles("/Tilesets/grasstileset.gif");
+		tm = new TileMap(32);
+		tm.loadTiles("/Tilesets/tileset.png");
 		tm.setPosition(tm.getTileSize() * -1, tm.getTileSize() * -1);
 		if (!initialized) {
 			tm.loadMap("/Maps/room" + level + ".map");
@@ -173,7 +173,7 @@ public class LevelState extends GameState {
 		p.setGameState(this);
 		p.setTileMap(tm);
 		if (!initialized) {
-			bg = new Background("/Backgrounds/grassbg1.gif");
+			bg = new Background("/Backgrounds/indoorbg.jpg");
 			enemies = new ArrayList<Enemy>();
 		}
 	}
@@ -213,7 +213,7 @@ public class LevelState extends GameState {
 		if (!paused) {
 			g.setColor(Color.white);
 			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-			// bg.draw(g);
+			bg.draw(g);
 			tm.draw(g);
 			p.draw(g);
 			for (Enemy e : enemies) {

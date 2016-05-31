@@ -3,6 +3,10 @@ package entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import gameState.LevelState;
 import main.GamePanel;
@@ -36,6 +40,10 @@ public class Enemy extends Player {
 	 * indicates if the enemy moves vertical or horizontal
 	 */
 	protected boolean horizontal;
+	
+	protected BufferedImage image;
+	
+	protected BufferedImage attackImage;
 
 	/**
 	 * creates a new Enemy and initializes its width, height, and direction
@@ -85,6 +93,13 @@ public class Enemy extends Player {
 		speed = 2;
 
 		health = 1;
+		
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemy1.png"));
+			attackImage = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemyattack.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -204,11 +219,10 @@ public class Enemy extends Player {
 	 */
 	public void draw(Graphics2D g) {
 		g.setColor(Color.red);
-		g.drawRect((int) x - width / 2, (int) y - height / 2, width, height);
+		g.drawImage(image, (int) x - width / 2, (int) y - height / 2, null);
 		if (attacking) {
-			g.setColor(Color.green);
 			for (Rectangle r : attack) {
-				g.draw(r);
+				g.drawImage(attackImage,r.x, r.y, null);
 			}
 		}
 	}
