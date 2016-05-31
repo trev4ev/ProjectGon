@@ -1,5 +1,9 @@
 package entity;
 
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
@@ -37,6 +41,12 @@ public class AdvancedEnemy extends Enemy {
 		super(tm, gs, i, direction);
 		moveDelay = 1000;
 		moveStartTime = System.nanoTime();
+		try {
+			image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemy2.png"));
+			attackImage = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemyattack2.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

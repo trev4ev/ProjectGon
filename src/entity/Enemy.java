@@ -41,8 +41,14 @@ public class Enemy extends Player {
 	 */
 	protected boolean horizontal;
 	
+	/**
+	 * image for enemy
+	 */
 	protected BufferedImage image;
 	
+	/**
+	 * image for enemy attack
+	 */
 	protected BufferedImage attackImage;
 
 	/**

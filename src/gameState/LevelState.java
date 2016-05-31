@@ -215,10 +215,10 @@ public class LevelState extends GameState {
 			g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
 			bg.draw(g);
 			tm.draw(g);
-			p.draw(g);
 			for (Enemy e : enemies) {
 				e.draw(g);
 			}
+			p.draw(g);
 			if (dead) {
 				deathScreen(g);
 			}
@@ -227,8 +227,10 @@ public class LevelState extends GameState {
 			}
 
 		} else {
-			// add pause
-			g.fillRect(GamePanel.WIDTH / 2 - 80, GamePanel.HEIGHT / 2 - 10, 160, 20);
+			g.setColor(Color.white);
+			g.fillRect(0, GamePanel.HEIGHT / 2 - 20, GamePanel.WIDTH, 40);
+			g.setColor(Color.red);
+			g.drawString("Paused", GamePanel.WIDTH / 2 - 20, GamePanel.HEIGHT / 2 + 4);
 		}
 	}
 

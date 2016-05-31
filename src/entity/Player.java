@@ -94,7 +94,7 @@ public class Player extends Entity {
 
 		direction = Entity.DOWN;
 
-		maxHealth = 5;
+		maxHealth = 10;
 		health = maxHealth;
 
 		animation = new Animation[1];
@@ -197,10 +197,13 @@ public class Player extends Entity {
 		} else {
 			g.drawImage(animation[0].getImage(), (int) x - width / 2, (int) y - height / 2, null);
 		}
-		g.setColor(Color.black);
-		g.drawRect(GamePanel.WIDTH / 8 - 31, 9, maxHealth * 12 + 1, 11);
+		g.setColor(Color.white);
+		g.drawRect(GamePanel.WIDTH / 8 - 31, 10, maxHealth * 12 + 1, 12);
 		g.setColor(Color.red);
-		g.fillRect(GamePanel.WIDTH / 8 - 30, 10, health * 12, 10);
+		g.fillRect(GamePanel.WIDTH / 8 - 30, 11, health * 12, 11);
+		if(invincible) {
+			g.fillOval(GamePanel.WIDTH/8 - 45, 11, 10, 10);
+		}
 	}
 
 	/**

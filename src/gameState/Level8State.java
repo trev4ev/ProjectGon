@@ -23,7 +23,6 @@ public class Level8State extends LevelState {
 		this.gsm = gsm;
 		this.p = p;
 		p.setPosition(p.getX() - tm.getTileSize(), p.getY());
-		GamePanel.stopMusic();
 	}
 
 	/*
@@ -42,6 +41,24 @@ public class Level8State extends LevelState {
 			enemies.get(0).setSpeed(4);
 			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 			blocks++;
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(1).setPosition(GamePanel.WIDTH * 0.4, GamePanel.HEIGHT * 0.7);
+			enemies.get(1).setSpeed(2);
+			tm.getWalls()[blocks] = enemies.get(1).getRectangle();
+			blocks++;
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(2).setPosition(GamePanel.WIDTH * 0.4, GamePanel.HEIGHT * 0.4);
+			enemies.get(2).setSpeed(2);
+			tm.getWalls()[blocks] = enemies.get(2).getRectangle();
+			blocks++;
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(3).setPosition(GamePanel.WIDTH * 0.6, GamePanel.HEIGHT * 0.4);
+			enemies.get(3).setSpeed(4);
+			tm.getWalls()[blocks] = enemies.get(3).getRectangle();
+			blocks++;
 			tm.setWallCount(blocks);
 		}
 		for (int i = tm.getWallCount(); i < tm.getWalls().length; i++) {
@@ -58,6 +75,7 @@ public class Level8State extends LevelState {
 		switch (i) {
 		case 3:
 			won = true;
+			GamePanel.stopMusic();
 			break;
 		}
 	}

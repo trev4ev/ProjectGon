@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	 */
 	public static final int WIDTH = 640;
 	public static final int HEIGHT = 512;
-	public static final double SCALE = 1.4;
+	public static final double SCALE = 1.3;
 
 	/**
 	 * Thread to run the game
