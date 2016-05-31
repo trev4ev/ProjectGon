@@ -9,6 +9,7 @@ import main.GamePanel;
 import tileMap.TileMap;
 
 /**
+ * This class extends Enemy but has a more advanced and random movement algorithm.
  * @author Trevor Aquino
  *
  */

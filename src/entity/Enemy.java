@@ -13,6 +13,9 @@ import main.GamePanel;
 import tileMap.TileMap;
 
 /**
+ * This class represents all enemies in the game. This class extends a player
+ * class but has automated movement and attacking.
+ * 
  * @author Trevor Aquino
  *
  */
@@ -40,12 +43,12 @@ public class Enemy extends Player {
 	 * indicates if the enemy moves vertical or horizontal
 	 */
 	protected boolean horizontal;
-	
+
 	/**
 	 * image for enemy
 	 */
 	protected BufferedImage image;
-	
+
 	/**
 	 * image for enemy attack
 	 */
@@ -99,7 +102,7 @@ public class Enemy extends Player {
 		speed = 2;
 
 		health = 1;
-		
+
 		try {
 			image = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemy1.png"));
 			attackImage = ImageIO.read(getClass().getResourceAsStream("/Sprites/Enemies/enemyattack.png"));
@@ -228,7 +231,7 @@ public class Enemy extends Player {
 		g.drawImage(image, (int) x - width / 2, (int) y - height / 2, null);
 		if (attacking) {
 			for (Rectangle r : attack) {
-				g.drawImage(attackImage,r.x, r.y, null);
+				g.drawImage(attackImage, r.x, r.y, null);
 			}
 		}
 	}

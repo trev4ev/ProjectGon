@@ -6,6 +6,10 @@ import gameState.LevelState;
 import tileMap.TileMap;
 
 /**
+ * This class is the parent to Player, Enemy, and AdvancedEnemy. This class
+ * holds methods and variables for position, direction, health, speed, width and
+ * height
+ * 
  * @author Trevor Aquino
  *
  */
@@ -83,7 +87,7 @@ public abstract class Entity {
 	 * the speed at which the entity moves
 	 */
 	protected double speed;
-	
+
 	/**
 	 * current health and max health of the entity
 	 */

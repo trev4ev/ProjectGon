@@ -14,8 +14,11 @@ import main.GamePanel;
 import tileMap.TileMap;
 
 /**
+ * The Player class represents the main character in the game. This class
+ * extends Entity and has methods for movement, attacking, and drawing to the
+ * screen.
+ * 
  * @author Trevor Aquino
- *
  */
 public class Player extends Entity {
 
@@ -201,8 +204,8 @@ public class Player extends Entity {
 		g.drawRect(GamePanel.WIDTH / 8 - 31, 10, maxHealth * 12 + 1, 12);
 		g.setColor(Color.red);
 		g.fillRect(GamePanel.WIDTH / 8 - 30, 11, health * 12, 11);
-		if(invincible) {
-			g.fillOval(GamePanel.WIDTH/8 - 45, 11, 10, 10);
+		if (invincible) {
+			g.fillOval(GamePanel.WIDTH / 8 - 45, 11, 10, 10);
 		}
 	}
 
