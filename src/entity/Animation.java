@@ -114,4 +114,18 @@ public class Animation {
 	public boolean playedOnce() {
 		return playedOnce;
 	}
+	
+	/**
+	 * @return array of images
+	 */
+	public BufferedImage[] getSprites() { 
+		return sprites;
+	}
+	
+	/**
+	 * @return delay of animation
+	 */
+	public long getDelay() {
+		return delay;
+	}
 }

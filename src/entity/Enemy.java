@@ -242,5 +242,19 @@ public class Enemy extends Player {
 	public int getBlockNum() {
 		return blockNum;
 	}
+	
+	/**
+	 * @return if enemy is alive
+	 */
+	public boolean isAlive() {
+		return isAlive;
+	}
+	
+	/**
+	 * @return speed of the enemy
+	 */
+	public double getSpeed() {
+		return speed;
+	}
 
 }

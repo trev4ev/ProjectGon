@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 import audio.AudioPlayer;
+import gameState.GameState;
 import gameState.LevelState;
 import main.GamePanel;
 import tileMap.TileMap;
@@ -344,6 +345,34 @@ public class Player extends Entity {
 	 */
 	public void setGameState(LevelState gs) {
 		this.gs = gs;
+	}
+	
+	/**
+	 * @return the player's tileMap
+	 */
+	public TileMap getTileMap() {
+		return tm;
+	}
+	
+	/**
+	 * @return the player's gameState
+	 */
+	public GameState getGameState() {
+		return gs;
+	}
+	
+	/**
+	 * @return heath of the player
+	 */
+	public int getHealth() {
+		return health;
+	}
+	
+	/**
+	 * @return direction of the player
+	 */
+	public int getDirection() {
+		return direction;
 	}
 
 }
