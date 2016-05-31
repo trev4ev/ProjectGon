@@ -12,6 +12,10 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
+ * This class represents a map. Uses a .jpg file to load in all tile images and
+ * then uses a .map file to read in the map. Sets the appropriate tiles to the
+ * right places.
+ * 
  * @author Trevor Aquino
  *
  */

@@ -9,6 +9,9 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 /**
+ * Represents a background for a gameState. Uses an image as a background and
+ * can be moved around and drawn at different positions on the jPanel.
+ * 
  * @author Trevor Aquino
  *
  */

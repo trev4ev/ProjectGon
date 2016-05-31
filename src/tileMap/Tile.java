@@ -3,6 +3,9 @@ package tileMap;
 import java.awt.image.BufferedImage;
 
 /**
+ * Represents a single tile in the map. Each tile has a type to tell the game if
+ * it can be walked through and if it should send the player to a new level.
+ * 
  * @author Trevor Aquino
  *
  */
