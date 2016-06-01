@@ -10,7 +10,7 @@ import tileMap.TileMap;
  * holds methods and variables for position, direction, health, speed, width and
  * height
  * 
- * @author Trevor Aquino
+ * @author Jerry Qing
  *
  */
 public abstract class Entity {

@@ -17,7 +17,7 @@ import tileMap.TileMap;
  * functions and variables including loading in the tileMap and player and
  * updating and drawing everything in the level.
  * 
- * @author Trevor Aquino
+ * @author Alex Xu
  *
  */
 public class LevelState extends GameState {

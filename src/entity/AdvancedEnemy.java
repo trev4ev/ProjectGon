@@ -10,7 +10,8 @@ import tileMap.TileMap;
 
 /**
  * This class extends Enemy but has a more advanced and random movement algorithm.
- * @author Trevor Aquino
+ * 
+ * @author Jerry Qing
  *
  */
 public class AdvancedEnemy extends Enemy {

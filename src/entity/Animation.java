@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
  * This class uses an array of images to create an animation with a certain
  * delay between each frame.
  * 
- * @author Trevor Aquino
+ * @author Jerry Qing
  *
  */
 public class Animation {

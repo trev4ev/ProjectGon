@@ -8,7 +8,7 @@ import entity.Entity;
  * Abstract class for all GameStates in the game. Includes the necessary methods
  * including initialization, update, and drawing to the screen.
  * 
- * @author Trevor Aquino
+ * @author Alex Xu
  *
  */
 public abstract class GameState {

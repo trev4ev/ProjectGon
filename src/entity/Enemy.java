@@ -16,7 +16,7 @@ import tileMap.TileMap;
  * This class represents all enemies in the game. This class extends a player
  * class but has automated movement and attacking.
  * 
- * @author Trevor Aquino
+ * @author Jerry Qing
  *
  */
 public class Enemy extends Player {

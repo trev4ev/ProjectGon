@@ -8,7 +8,7 @@ import tileMap.Background;
 /**
  * Extends GameState and shows the instructions on how to play.
  * 
- * @author Trevor Aquino
+ * @author Alex Xu
  *
  */
 public class HelpState extends GameState {

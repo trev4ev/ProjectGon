@@ -19,7 +19,7 @@ import tileMap.TileMap;
  * extends Entity and has methods for movement, attacking, and drawing to the
  * screen.
  * 
- * @author Trevor Aquino
+ * @author Jerry Qing
  */
 public class Player extends Entity {
 

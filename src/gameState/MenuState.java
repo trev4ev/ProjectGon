@@ -14,7 +14,7 @@ import tileMap.Background;
  * state has 3 options which allow the users to start the game, read the help
  * manual, or exit the game.
  * 
- * @author Trevor Aquino
+ * @author Alex Xu
  *
  */
 public class MenuState extends GameState {

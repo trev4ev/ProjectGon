@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * The class uses an ArrayList to hold all the GameStates so they can be
  * accessed both forward and backward. Can switch from state to state easily.
  * 
- * @author Trevor Aquino
+ * @author Alex Xu
  *
  */
 public class GameStateManager {
