@@ -323,4 +323,11 @@ public class TileMap {
 		wallCount = i;
 	}
 
+	/**
+	 * @return array of all the tiles
+	 */
+	public Tile[][] getTiles() {
+		return tiles;
+	}
+
 }
