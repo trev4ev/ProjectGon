@@ -124,4 +124,18 @@ public class GameStateManager {
 	public void keyReleased(int k) {
 		gameStates.get(currentState).keyReleased(k);
 	}
+
+	/**
+	 * @return list of game states
+	 */
+	public ArrayList<GameState> getGameStates() {
+		return gameStates;
+	}
+
+	/**
+	 * @return the index of the current state
+	 */
+	public int getCurrentState() {
+		return currentState;
+	}
 }
