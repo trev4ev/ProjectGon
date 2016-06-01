@@ -11,8 +11,16 @@ import javax.sound.sampled.Clip;
  */
 public class AudioPlayer {
 
+	/**
+	 * Creates a clip from the Sound package
+	 */
 	private Clip clip;
 
+	/**
+	 * Creates the input streams for the audioplayer
+	 * 
+	 * @param s Location of File
+	 */
 	public AudioPlayer(String s) {
 
 		try {
@@ -28,6 +36,9 @@ public class AudioPlayer {
 		}
 	}
 
+	/**
+	 * Plays the audio once
+	 */
 	public void play() {
 		if (clip == null)
 			return;
@@ -36,16 +47,25 @@ public class AudioPlayer {
 		clip.start();
 	}
 	
+	/**
+	 * Loops the audio until a call to stop
+	 */
 	public void loop() {
 		clip.start();
 		clip.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
+	/**
+	 * Pauses the audio
+	 */
 	public void stop() {
 		if (clip.isRunning())
 			clip.stop();
 	}
 
+	/**
+	 * Closes the entire clip
+	 */
 	public void close() {
 		stop();
 		clip.close();
