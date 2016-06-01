@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import audio.AudioPlayer;
 import entity.Enemy;
 import entity.Player;
 import main.GamePanel;
@@ -71,6 +72,7 @@ public class LevelState extends GameState {
 	 * basic counter for end game
 	 */
 	public int count = 0;
+
 
 	/**
 	 * create and new TileMap and load the map corresponding to the current

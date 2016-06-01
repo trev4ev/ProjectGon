@@ -39,13 +39,13 @@ public class Level7State extends LevelState {
 			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
 			enemyCount++;
 			enemies.get(0).setPosition(GamePanel.WIDTH * 0.6, GamePanel.HEIGHT * 0.5);
-			enemies.get(0).setSpeed(2);
+			enemies.get(0).setSpeed(4);
 			tm.getWalls()[blocks] = enemies.get(0).getRectangle();
 			blocks++;
 			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
 			enemyCount++;
 			enemies.get(1).setPosition(GamePanel.WIDTH * 0.4, GamePanel.HEIGHT * 0.7);
-			enemies.get(1).setSpeed(2);
+			enemies.get(1).setSpeed(4);
 			tm.getWalls()[blocks] = enemies.get(1).getRectangle();
 			blocks++;
 			tm.setWallCount(blocks);

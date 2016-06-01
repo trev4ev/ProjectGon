@@ -1,5 +1,6 @@
 package gameState;
 
+import audio.AudioPlayer;
 import entity.AdvancedEnemy;
 import entity.Player;
 import main.GamePanel;
@@ -11,6 +12,8 @@ import main.GamePanel;
  *
  */
 public class Level8State extends LevelState {
+	
+	private AudioPlayer vic;
 
 	/**
 	 * calls the super constructor, stops the current background music
@@ -61,6 +64,27 @@ public class Level8State extends LevelState {
 			enemies.get(3).setSpeed(4);
 			tm.getWalls()[blocks] = enemies.get(3).getRectangle();
 			blocks++;
+			
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(4).setPosition(GamePanel.WIDTH * 0.5, GamePanel.HEIGHT * 0.5);
+			enemies.get(4).setSpeed(4);
+			tm.getWalls()[blocks] = enemies.get(3).getRectangle();
+			blocks++;
+			
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(5).setPosition(GamePanel.WIDTH * 0.2, GamePanel.HEIGHT * 0.8);
+			enemies.get(5).setSpeed(4);
+			tm.getWalls()[blocks] = enemies.get(3).getRectangle();
+			blocks++;
+			
+			enemies.add(new AdvancedEnemy(tm, this, blocks, true));
+			enemyCount++;
+			enemies.get(6).setPosition(GamePanel.WIDTH * 0.8, GamePanel.HEIGHT * 0.2);
+			enemies.get(6).setSpeed(4);
+			tm.getWalls()[blocks] = enemies.get(3).getRectangle();
+			blocks++;
 			tm.setWallCount(blocks);
 		}
 		for (int i = tm.getWallCount(); i < tm.getWalls().length; i++) {
@@ -78,6 +102,8 @@ public class Level8State extends LevelState {
 		case 3:
 			won = true;
 			GamePanel.stopMusic();
+			vic = new AudioPlayer("/SFX/Victory.mp3");
+			vic.play();
 			break;
 		}
 	}
