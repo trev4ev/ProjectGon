@@ -30,16 +30,6 @@ public class MenuState extends GameState {
 	private int currentChoice = 0;
 
 	/**
-	 * array of possible menu choices
-	 */
-	private String[] options = { "Start", "Help", "Quit" };
-
-	/**
-	 * font for menu options
-	 */
-	private Font font;
-
-	/**
 	 * load the background image and start playing music
 	 * 
 	 * @param gsm
@@ -49,8 +39,7 @@ public class MenuState extends GameState {
 		this.gsm = gsm;
 
 		try {
-			bg = new Background("/Backgrounds/menubg.gif");
-			font = new Font("Arial", Font.PLAIN, 12);
+			bg = new Background("/Backgrounds/menubg.png");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,18 +59,15 @@ public class MenuState extends GameState {
 	 */
 	@Override
 	public void draw(Graphics2D g) {
-		// bg.draw(g);
 		g.setColor(Color.white);
 		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
-		g.setFont(font);
-		for (int i = 0; i < options.length; i++) {
+		for (int i = 0; i < 3; i++) {
 			if (currentChoice == i) {
-				g.setColor(Color.red);
-				g.fillOval(GamePanel.WIDTH / 2 - 34, 270 + i * 15, 10, 10);
+				g.setColor(new Color(0, 0, 0, 100));
+				g.fillRect(GamePanel.WIDTH / 2 - 55, 270 + i * 50, 110, 35);
 			}
-			g.setColor(Color.black);
-			g.drawString(options[i], GamePanel.WIDTH / 2 - 20, 280 + i * 15);
 		}
+		bg.draw(g);
 	}
 
 	/**
@@ -114,13 +100,13 @@ public class MenuState extends GameState {
 			break;
 		case KeyEvent.VK_DOWN:
 			currentChoice++;
-			if (currentChoice == options.length)
+			if (currentChoice == 3)
 				currentChoice = 0;
 			break;
 		case KeyEvent.VK_UP:
 			currentChoice--;
 			if (currentChoice < 0)
-				currentChoice = options.length - 1;
+				currentChoice = 2;
 			break;
 		}
 	}

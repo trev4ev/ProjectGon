@@ -201,9 +201,9 @@ public class Player extends Entity {
 		} else {
 			g.drawImage(animation[0].getImage(), (int) x - width / 2, (int) y - height / 2, null);
 		}
-		g.setColor(Color.white);
+		g.setColor(Color.WHITE);
 		g.drawRect(GamePanel.WIDTH / 8 - 31, 10, maxHealth * 12 + 1, 12);
-		g.setColor(Color.red);
+		g.setColor(new Color(100, 43, 151));
 		g.fillRect(GamePanel.WIDTH / 8 - 30, 11, health * 12, 11);
 		if (invincible) {
 			g.fillOval(GamePanel.WIDTH / 8 - 45, 11, 10, 10);
@@ -346,28 +346,28 @@ public class Player extends Entity {
 	public void setGameState(LevelState gs) {
 		this.gs = gs;
 	}
-	
+
 	/**
 	 * @return the player's tileMap
 	 */
 	public TileMap getTileMap() {
 		return tm;
 	}
-	
+
 	/**
 	 * @return the player's gameState
 	 */
 	public GameState getGameState() {
 		return gs;
 	}
-	
+
 	/**
 	 * @return heath of the player
 	 */
 	public int getHealth() {
 		return health;
 	}
-	
+
 	/**
 	 * @return direction of the player
 	 */

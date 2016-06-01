@@ -73,7 +73,6 @@ public class LevelState extends GameState {
 	 */
 	public int count = 0;
 
-
 	/**
 	 * create and new TileMap and load the map corresponding to the current
 	 * level
@@ -233,9 +232,9 @@ public class LevelState extends GameState {
 			}
 
 		} else {
-			g.setColor(Color.white);
+			g.setColor(new Color(100, 43, 151));
 			g.fillRect(0, GamePanel.HEIGHT / 2 - 20, GamePanel.WIDTH, 40);
-			g.setColor(Color.red);
+			g.setColor(Color.WHITE);
 			g.drawString("Paused", GamePanel.WIDTH / 2 - 20, GamePanel.HEIGHT / 2 + 4);
 		}
 	}
