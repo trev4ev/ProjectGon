@@ -6,6 +6,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 /**
+ * Creates a audio player class which plays audio clips
+ * 
  * @author Jerry Qing
  *
  */
@@ -19,7 +21,8 @@ public class AudioPlayer {
 	/**
 	 * Creates the input streams for the audioplayer
 	 * 
-	 * @param s Location of File
+	 * @param s
+	 *            Location of File
 	 */
 	public AudioPlayer(String s) {
 
@@ -46,7 +49,7 @@ public class AudioPlayer {
 		clip.setFramePosition(0);
 		clip.start();
 	}
-	
+
 	/**
 	 * Loops the audio until a call to stop
 	 */
